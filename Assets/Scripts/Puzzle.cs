@@ -12,6 +12,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     private Vector2 currentSize;
     private RectTransform rectTransform;
     public BoardID boardID; 
+    public bool isSolved;
 
 
     void Awake()
@@ -27,6 +28,27 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     void Start()
     {
         currentSize = rectTransform.sizeDelta;
+
+        var puzzlesData = PuzzleDataManager.LoadPuzzleStates();
+        var puzzleData = puzzlesData.Find(p => p.puzzleName == gameObject.name);
+        if (puzzleData != null)
+        {
+            isSolved = puzzleData.isSolved;
+            if(isSolved)
+            {
+                if (transform.parent != null)
+                {
+                    transform.parent.gameObject.SetActive(false);
+                }
+                Board targetBoard = Board.FindBoardByBoardID(boardID);
+                if (targetBoard != null)
+                {                
+                    targetBoard.CorrectPuzzle(this.gameObject, originalPosition,originalSize);
+                }
+
+            }
+        }
+        
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -40,10 +62,6 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
     public void OnDrag(PointerEventData eventData)
     {
-        // transform.position = eventData.position;
-        // Vector3 screenPosition = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, 0));
-        // screenPosition.z = 0; 
-
         RectTransform canvasRectTransform = transform.parent as RectTransform; 
         if (canvasRectTransform != null)
         {
@@ -64,7 +82,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
         float distance = Vector3.Distance(adjustedMousePosition, originalPosition);
 
-        if (distance <= 7f)
+        if (distance <= 9f)
         {
             if (transform.parent != null)
             {
@@ -75,6 +93,21 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             {                
                 targetBoard.CorrectPuzzle(this.gameObject, originalPosition,originalSize);
             }
+
+            isSolved = true;
+            var puzzlesData = PuzzleDataManager.LoadPuzzleStates();
+            var puzzleData = puzzlesData.Find(p => p.puzzleName == gameObject.name);
+
+            if (puzzleData == null)
+            {
+                puzzlesData.Add(new PuzzleData { puzzleName = gameObject.name, isSolved = true });
+            }
+
+            else
+            {
+                puzzleData.isSolved = true;
+            }
+            PuzzleDataManager.SavePuzzleStates(puzzlesData);
             
         }
         else
@@ -90,7 +123,6 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
     }
     
-
-
-    
 }
+
+

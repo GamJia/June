@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPosition: {x: 0, y: 0}
-  boardID: 2
+  boardID: 3
 --- !u!114 &6598756699621668000
 MonoBehaviour:
   m_ObjectHideFlags: 0

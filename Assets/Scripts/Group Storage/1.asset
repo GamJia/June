@@ -26,14 +26,12 @@ MonoBehaviour:
     - {fileID: 2645013378354008046, guid: 3fdde2bade04d794e972988c262cc7d1, type: 3}
     - {fileID: 4234235023059952612, guid: 3ab9d498a85799f43ab5fe84c8404549, type: 3}
     - {fileID: 5518796326818610893, guid: 54a9619722817ac45955956abf15c7b2, type: 3}
-  - _groupID: 2
-    _boardList:
     - {fileID: 1061021802398454215, guid: bffef306fdc673045b6c8a23038e0ab4, type: 3}
     - {fileID: 6259445666328960145, guid: f06ee5c6b048ad749b739c896cab069f, type: 3}
     - {fileID: 5790017387277733441, guid: 7de6022b3df266847a36991eee1a89cb, type: 3}
-    - {fileID: 2210132902237654581, guid: 49ddbd63a145cf14fadb8c932d3e0872, type: 3}
-  - _groupID: 3
+  - _groupID: 2
     _boardList:
+    - {fileID: 2210132902237654581, guid: 49ddbd63a145cf14fadb8c932d3e0872, type: 3}
     - {fileID: 7869041592328088587, guid: 30da572b618e3414eab8b67cdba9ffa7, type: 3}
     - {fileID: 7428868536912984571, guid: eb7173160a6b83e459f1af828243ec65, type: 3}
     - {fileID: 5253926139863519573, guid: e834fe75aebb9874e92d20f9f7c83615, type: 3}
