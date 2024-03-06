@@ -5,6 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneSaver : MonoBehaviour
 {
+    
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)
+        {
+            SaveCurrentScene();
+        }
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            SaveCurrentScene();
+        }
+    }
+
     void OnApplicationQuit()
     {
         SaveCurrentScene();
