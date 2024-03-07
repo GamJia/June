@@ -82,7 +82,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
         float distance = Vector3.Distance(adjustedMousePosition, originalPosition);
 
-        if (distance <= 9f)
+        if (distance <= 9f&&GaugeManager.Instance.IsAvailable())
         {
             if (transform.parent != null)
             {
@@ -108,7 +108,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
                 puzzleData.isSolved = true;
             }
             PuzzleDataManager.SavePuzzleStates(puzzlesData);
-            
+            GaugeManager.Instance.UpdateGauge();
         }
         else
         {
