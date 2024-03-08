@@ -2995,6 +2995,7 @@ MonoBehaviour:
   Printer: {fileID: 960157819}
   Characters: {fileID: 1446407986}
   Printer_Text: {fileID: 1454881161}
+  Name_Text: {fileID: 0}
   SEAudio: {fileID: 1993107603}
   CallAudio: {fileID: 1993107602}
   Delay: 0.02
@@ -3381,6 +3382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2255e66b58bcfa24f9911b3ed2d2488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
   Emotion:
     _emotion:
     - Normal

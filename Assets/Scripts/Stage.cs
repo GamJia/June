@@ -89,7 +89,7 @@ public class Stage : MonoBehaviour
                 float width = puzzleRectTransform.rect.width;
                 float height = puzzleRectTransform.rect.height;
 
-                float targetSize = 120f;
+                float targetSize = 180f;
 
                 if (width >= height)
                 {

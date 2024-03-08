@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using MoreMountains.NiceVibrations;
+
 
 public class Board : MonoBehaviour
 {
@@ -45,7 +45,7 @@ public class Board : MonoBehaviour
         }
 
         CheckPuzzleCompletion();
-        MMVibrationManager.Vibrate();
+        
     }
 
 

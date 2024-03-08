@@ -9,7 +9,7 @@ public class CinemachineManager : MonoBehaviour
     public Transform targetTransform; 
     private CinemachineVirtualCamera cinemachineCamera;
     public float zoomSpeed = 0.01f; 
-    public float minOrthographicSize = 2.2f; 
+    public float minOrthographicSize = 1.4f; 
     public float maxOrthographicSize = 5.4f; 
     public float moveSpeed = 0.01f; 
     public static bool isPuzzleDragging = false;

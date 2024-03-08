@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI; 
 using System;
+using MoreMountains.NiceVibrations;
 
 public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
@@ -82,7 +83,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
         float distance = Vector3.Distance(adjustedMousePosition, originalPosition);
 
-        if (distance <= 9f&&GaugeManager.Instance.IsAvailable())
+        if (distance <= 10f&&GaugeManager.Instance.IsAvailable())
         {
             if (transform.parent != null)
             {
@@ -108,7 +109,9 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
                 puzzleData.isSolved = true;
             }
             PuzzleDataManager.SavePuzzleStates(puzzlesData);
+            MMVibrationManager.Vibrate();
             GaugeManager.Instance.UpdateGauge();
+            AudioManager.Instance.PlaySFX(AudioID.Correct);        
         }
         else
         {

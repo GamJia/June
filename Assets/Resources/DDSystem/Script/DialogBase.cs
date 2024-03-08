@@ -130,14 +130,15 @@ namespace Doublsb.Dialog
         public DialogFormat Format = new DialogFormat();
 
         public string PrintText = string.Empty;
+        public string CharacterName= string.Empty;
 
-        public bool isSkippable = true;
+        public bool isSkippable = false;
         public UnityAction Callback = null;
 
         //================================================
         //Public Method
         //================================================
-        public DialogData(string originalString, string character = "", UnityAction callback = null, bool isSkipable = true)
+        public DialogData(string originalString, string character = "", UnityAction callback = null, bool isSkipable = false)
         {
             _convert(originalString);
 
@@ -208,7 +209,7 @@ namespace Doublsb.Dialog
         //Private Variable
         //================================================
         public string DefaultSize = "60";
-        private string _defaultColor = "white";
+        private string _defaultColor = "#30343A";
 
         private string _color;
         private string _size;

@@ -42,6 +42,7 @@ namespace Doublsb.Dialog
 
         [Header("UI Objects")]
         public Text Printer_Text;
+        public Text Name_Text;
 
         [Header("Audio Objects")]
         public AudioSource SEAudio;
@@ -325,6 +326,7 @@ namespace Doublsb.Dialog
         private IEnumerator _print(string Text)
         {
             _current_Data.PrintText += _current_Data.Format.OpenTagger;
+            Name_Text.text=_current_Character.GetComponent<Character>().Name;
 
             for (int i = 0; i < Text.Length; i++)
             {
