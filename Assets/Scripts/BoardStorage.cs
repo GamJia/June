@@ -58,7 +58,6 @@ public class BoardStorage : ScriptableObject
 
     public List<GameObject> GetBoard(BoardID id) 
     {
-        Debug.Assert(boardArray.Length > 0, "No Board!!"); 
 
         if (boardDictionary.Count.Equals(0))
         {

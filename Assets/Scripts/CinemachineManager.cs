@@ -8,10 +8,10 @@ public class CinemachineManager : MonoBehaviour
 {
     public Transform targetTransform; 
     private CinemachineVirtualCamera cinemachineCamera;
-    public float zoomSpeed = 0.01f; 
-    public float minOrthographicSize = 1.4f; 
-    public float maxOrthographicSize = 5.4f; 
-    public float moveSpeed = 0.01f; 
+    [SerializeField] private float zoomSpeed = 0.01f; 
+    [SerializeField] private float minOrthographicSize = 1.4f; 
+    [SerializeField] private float maxOrthographicSize = 5.4f; 
+    [SerializeField] private float moveSpeed = 0.01f; 
     public static bool isPuzzleDragging = false;
 
     public static CinemachineManager Instance => instance;
@@ -71,10 +71,13 @@ public class CinemachineManager : MonoBehaviour
     private void HandleZoom()
     {
         #if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR
+
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         float newSize = cinemachineCamera.m_Lens.OrthographicSize - scroll * zoomSpeed;
         cinemachineCamera.m_Lens.OrthographicSize = Mathf.Clamp(newSize, minOrthographicSize, maxOrthographicSize);
+        
         #elif UNITY_ANDROID || UNITY_IOS
+
         if (Input.touchCount == 2)
         {
             Touch touchZero = Input.GetTouch(0);
@@ -104,10 +107,8 @@ public class CinemachineManager : MonoBehaviour
             float moveX = -Input.GetAxis("Mouse X") * moveSpeed;
             float moveY = -Input.GetAxis("Mouse Y") * moveSpeed;
 
-            // 목표 위치 계산
             Vector3 targetPosition = transform.position + new Vector3(moveX, moveY, 0);
 
-            // 부드러운 이동을 위해 Lerp 함수 사용
             transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5f);
         }
     }

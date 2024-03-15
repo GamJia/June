@@ -42,23 +42,21 @@ public class Stage : MonoBehaviour
     void LoadPuzzle()
     {
         puzzles.Clear();
-        if(groupStorage != null)
+        if (groupStorage != null)
         {
-            boards = groupStorage.GetBoards(groupID); 
+            boards = groupStorage.GetBoards(groupID);
             foreach (GameObject boardObject in boards)
             {
                 Board boardComponent = boardObject.GetComponent<Board>();
                 if (boardComponent != null)
                 {
-                    List<GameObject> boardPuzzles = boardComponent.GetPuzzles(); 
+                    List<GameObject> boardPuzzles = boardStorage.GetBoard(boardComponent.boardID);
                     puzzles.AddRange(boardPuzzles);
                 }
-
             }
             Shuffle(puzzles);
             AssignPuzzle();
         }
-
     }
 
    

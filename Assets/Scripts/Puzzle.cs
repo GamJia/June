@@ -55,8 +55,8 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     public void OnBeginDrag(PointerEventData eventData)
     {
         float currentCameraSize = Camera.main.orthographicSize;
-        float sizeAdjustmentFactor = 5.4f / currentCameraSize; 
-        rectTransform.sizeDelta = originalSize * sizeAdjustmentFactor;
+        float sizeAdjustment = 5.4f / currentCameraSize; 
+        rectTransform.sizeDelta = originalSize * sizeAdjustment;
 
         CinemachineManager.SetPuzzleDragging(true);
     }
@@ -78,10 +78,10 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, 0));
-        Vector3 adjustedMousePosition = new Vector3(mouseWorldPosition.x * 100, mouseWorldPosition.y * 100, 0);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, 0));
+        Vector3 currentPosition = new Vector3(mousePosition.x * 100, mousePosition.y * 100, 0);
 
-        float distance = Vector3.Distance(adjustedMousePosition, originalPosition);
+        float distance = Vector3.Distance(currentPosition, originalPosition);
 
         if (distance <= 10f&&GaugeManager.Instance.IsAvailable())
         {

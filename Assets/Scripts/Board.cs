@@ -19,20 +19,14 @@ public class Board : MonoBehaviour
         }
     }
 
-    public List<GameObject> GetPuzzles()
-    {
-        List<GameObject> puzzleList = Stage.Instance.boardStorage.GetBoard(boardID);
-        return puzzleList; 
-    }
 
-
-    public void CorrectPuzzle(GameObject puzzle, Vector2 originalPosition, Vector2 puzzleSize)
+    public void CorrectPuzzle(GameObject puzzle, Vector2 puzzlePosition, Vector2 puzzleSize)
     {
         RectTransform puzzleRectTransform = puzzle.GetComponent<RectTransform>();
         
         if (puzzleRectTransform != null)
         {
-            Vector2 adjustment = originalPosition - currentPosition;
+            Vector2 adjustment = puzzlePosition - currentPosition;
             puzzleRectTransform.anchoredPosition = adjustment;
             puzzleRectTransform.sizeDelta = puzzleSize;            
             puzzleRectTransform.SetParent(this.transform, false);

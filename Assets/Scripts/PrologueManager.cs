@@ -23,5 +23,6 @@ public class PrologueManager : MonoBehaviour
             System.IO.File.Delete(filePath);
             Debug.Log("PuzzleData.json deleted successfully.");
         }
+
     }
 }
