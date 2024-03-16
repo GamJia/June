@@ -8,10 +8,10 @@ public class CinemachineManager : MonoBehaviour
 {
     public Transform targetTransform; 
     private CinemachineVirtualCamera cinemachineCamera;
-    [SerializeField] private float zoomSpeed = 0.01f; 
+    [SerializeField] private float zoomSpeed = 0.1f; 
     [SerializeField] private float minOrthographicSize = 1.4f; 
     [SerializeField] private float maxOrthographicSize = 5.4f; 
-    [SerializeField] private float moveSpeed = 0.01f; 
+    [SerializeField] private float moveSpeed = 0.5f; 
     public static bool isPuzzleDragging = false;
 
     public static CinemachineManager Instance => instance;

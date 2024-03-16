@@ -15,8 +15,8 @@ public class Dialogue : MonoBehaviour
         var dialogTexts = new List<DialogData>();
 
         dialogTexts.Add(new DialogData("/size:init/휴, 드디어 퇴근이다.", "June"));
-        dialogTexts.Add(new DialogData("/size:init/하, 오늘도 부장이 엄청 쪼아대서 진짜 한계였어...", "June"));
-        dialogTexts.Add(new DialogData("/size:init//emote:Embrassed/응? 이게 뭐야? 지하철역이 왜 이렇게 된 거지?", "June"));
+        dialogTexts.Add(new DialogData("/size:init/오늘도 부장이 엄청 쪼아대서 진짜 한계였어...", "June"));
+        dialogTexts.Add(new DialogData("/size:init//emote:Embrassed/이게 뭐야? 지하철역이 왜 이렇게 된 거지?", "June"));
         dialogTexts.Add(new DialogData("/size:init//emote:Embrassed/이게 그 말로만 듣던 이세계인가?", "June"));
         dialogTexts.Add(new DialogData("/size:init/네 눈을 의심하지 마라, 인간", "God"));
         dialogTexts.Add(new DialogData("/size:init//emote:Embrassed/누구세요?", "June"));
