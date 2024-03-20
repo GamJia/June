@@ -80,11 +80,6 @@ public class GaugeManager : MonoBehaviour
         gaugeSlider.value = Mathf.Max(0, gaugeSlider.value - 1);
     }
 
-    public bool IsAvailable()
-    {
-        return gaugeSlider.value > 0;
-    }
-
 
     void LoadGauge()
     {

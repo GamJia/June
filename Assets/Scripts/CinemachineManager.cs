@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+
 
 public class CinemachineManager : MonoBehaviour
 {
     public Transform targetTransform; 
     private CinemachineVirtualCamera cinemachineCamera;
-    [SerializeField] private float zoomSpeed = 0.1f; 
-    [SerializeField] private float minOrthographicSize = 1.4f; 
-    [SerializeField] private float maxOrthographicSize = 5.4f; 
-    [SerializeField] private float moveSpeed = 0.5f; 
-    public static bool isPuzzleDragging = false;
+    private float minOrthographicSize = 0.9f; 
+    private float maxOrthographicSize = 5.4f; 
+    private float zoomSpeed = 0.1f; 
+    private float moveSpeed = 0.7f; 
+    public static bool isDragging = false;
+
+    private Coroutine sizeChangeCoroutine;
 
     public static CinemachineManager Instance => instance;
     private static CinemachineManager instance;
@@ -34,25 +38,25 @@ public class CinemachineManager : MonoBehaviour
 
     void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        if ((SceneManager.GetActiveScene().buildIndex == 0))
         {
             return; 
         }
-        
+
+        if (isDragging)
+        {
+            return;
+        }
 
         if (cinemachineCamera.Follow == null)
         {
-            if(!isPuzzleDragging)
-            {
-                HandleZoom();
-                HandleMovement();
-            }
+            HandleMovement();
         }
     }
 
-    public static void SetPuzzleDragging(bool dragging)
+    public void SetDragging(bool dragging)
     {
-        isPuzzleDragging = dragging;
+        isDragging = dragging;
     }
 
     public bool ChangeTarget(bool isAvailable)
@@ -68,15 +72,44 @@ public class CinemachineManager : MonoBehaviour
         }
     }
 
-    private void HandleZoom()
+    private void HandleMovement()
     {
         #if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR
+        zoomSpeed = 1f; 
+        moveSpeed = 5f; 
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        float newSize = cinemachineCamera.m_Lens.OrthographicSize - scroll * zoomSpeed;
-        cinemachineCamera.m_Lens.OrthographicSize = Mathf.Clamp(newSize, minOrthographicSize, maxOrthographicSize);
+        if (Mathf.Abs(scroll) > 0.01f)
+        {
+            float targetSize = Mathf.Clamp(cinemachineCamera.m_Lens.OrthographicSize - (scroll * 6f), minOrthographicSize, maxOrthographicSize);
+            if (sizeChangeCoroutine != null)
+            {
+                StopCoroutine(sizeChangeCoroutine); 
+            }
+            sizeChangeCoroutine = StartCoroutine(ChangeSizeSmoothly(cinemachineCamera.m_Lens.OrthographicSize, targetSize));
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            float moveX = -Input.GetAxis("Mouse X") * moveSpeed;
+            float moveY = -Input.GetAxis("Mouse Y") * moveSpeed;
+
+            Vector3 targetPosition = transform.position + new Vector3(moveX, moveY, 0);
+
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5f);
+        }
         
         #elif UNITY_ANDROID || UNITY_IOS
+
+        if (Input.GetMouseButton(0))
+        {
+            float moveX = -Input.GetAxis("Mouse X") * moveSpeed;
+            float moveY = -Input.GetAxis("Mouse Y") * moveSpeed;
+
+            Vector3 targetPosition = transform.position + new Vector3(moveX, moveY, 0);
+
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5f);
+        }
 
         if (Input.touchCount == 2)
         {
@@ -96,34 +129,23 @@ public class CinemachineManager : MonoBehaviour
             float newSize = cinemachineCamera.m_Lens.OrthographicSize + deltaMagnitudeDiff;
 
             cinemachineCamera.m_Lens.OrthographicSize = Mathf.Lerp(cinemachineCamera.m_Lens.OrthographicSize, Mathf.Clamp(newSize, minOrthographicSize, maxOrthographicSize), Time.deltaTime * 5f);
+
         }
         #endif
     }
 
-    private void HandleMovement()
+    IEnumerator ChangeSizeSmoothly(float fromSize, float toSize)
     {
-        if (Input.GetMouseButton(0))
+        float elapsedTime = 0f;
+        float duration = 0.2f;
+        while (elapsedTime < duration)
         {
-            float moveX = -Input.GetAxis("Mouse X") * moveSpeed;
-            float moveY = -Input.GetAxis("Mouse Y") * moveSpeed;
-
-            Vector3 targetPosition = transform.position + new Vector3(moveX, moveY, 0);
-
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5f);
+            cinemachineCamera.m_Lens.OrthographicSize = Mathf.Lerp(fromSize, toSize, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
+        cinemachineCamera.m_Lens.OrthographicSize = toSize;
     }
 
 
-    private bool IsPointerOverObject()
-    {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            return true; 
-        }
-
-        return false; 
-    }
 }

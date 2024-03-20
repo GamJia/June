@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 41589609}
   - component: {fileID: 41589612}
   - component: {fileID: 41589611}
+  - component: {fileID: 41589613}
   - component: {fileID: 41589610}
   m_Layer: 5
   m_Name: Scrollbar Horizontal
@@ -396,6 +397,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41589608}
   m_CullTransparentMesh: 1
+--- !u!114 &41589613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41589608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fd678a1edd2844d9fb8baf8366045e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &169842934
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,10 +665,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
-  zoomSpeed: 0.1
-  minOrthographicSize: 1.4
-  maxOrthographicSize: 5.4
-  moveSpeed: 0.5
 --- !u!1 &342883633
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +676,6 @@ GameObject:
   - component: {fileID: 342883634}
   - component: {fileID: 342883636}
   - component: {fileID: 342883635}
-  - component: {fileID: 342883637}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -732,18 +741,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342883633}
   m_CullTransparentMesh: 1
---- !u!114 &342883637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342883633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76cea508843cf434787ff1b74bf158a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &352312965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,9 +1177,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 778521102cfa6724bac399a641666d57, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0281fb4a328c3ad4da615f6c8d8e59d1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3316,7 +3313,6 @@ GameObject:
   - component: {fileID: 1686046701}
   - component: {fileID: 1686046700}
   - component: {fileID: 1686046699}
-  - component: {fileID: 1686046703}
   - component: {fileID: 1686046704}
   m_Layer: 5
   m_Name: Background
@@ -3410,18 +3406,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1686046703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686046697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 519469e51406fb74eadb922a3bc629ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1686046704
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,6 +49,11 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
             }
         }
+
+        if (GetComponent<EventTriggerManager>() == null)
+        {
+            gameObject.AddComponent<EventTriggerManager>();
+        }
         
     }
 
@@ -58,7 +63,6 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         float sizeAdjustment = 5.4f / currentCameraSize; 
         rectTransform.sizeDelta = originalSize * sizeAdjustment;
 
-        CinemachineManager.SetPuzzleDragging(true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -82,8 +86,9 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         Vector3 currentPosition = new Vector3(mousePosition.x * 100, mousePosition.y * 100, 0);
 
         float distance = Vector3.Distance(currentPosition, originalPosition);
+        float currentGaugeValue = PlayerPrefs.GetFloat("CurrentGaugeValue", 0);
 
-        if (distance <= 10f&&GaugeManager.Instance.IsAvailable())
+        if (distance <= 30f&& currentGaugeValue > 0)
         {
             if (transform.parent != null)
             {
@@ -122,7 +127,6 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             }
         }
 
-        CinemachineManager.SetPuzzleDragging(false);
 
     }
     

@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 155584489}
   - component: {fileID: 155584488}
   - component: {fileID: 155584493}
+  - component: {fileID: 155584494}
   m_Layer: 0
   m_Name: Cinemachine
   m_TagString: Untagged
@@ -218,8 +219,8 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5.380002
-    NearClipPlane: 0.3
+    OrthographicSize: 3.800002
+    NearClipPlane: 0
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -271,6 +272,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &155584494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155584487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e229ba7ce049d5845a0f9f2674200f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 0}
 --- !u!1 &186517035
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +544,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 84266086ce2479c42bc991b4386626b0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 61c8d606db3b38544819be09194945d2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1409,11 +1423,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.380002
+  orthographic size: 3.800002
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
