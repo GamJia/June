@@ -636,7 +636,8 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: MOREMOUNTAINS_NICEVIBRATIONS
+    Android: MOREMOUNTAINS_NICEVIBRATIONS;USE_CINEMACHINE;USE_TIMELINE
+    Standalone: USE_CINEMACHINE;USE_TIMELINE
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
