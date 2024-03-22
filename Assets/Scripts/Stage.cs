@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 public class Stage : MonoBehaviour
 {
@@ -54,7 +55,23 @@ public class Stage : MonoBehaviour
                     puzzles.AddRange(boardPuzzles);
                 }
             }
-            Shuffle(puzzles);
+            
+            if (SceneManager.GetActiveScene().buildIndex.Equals(1)) // For Prologue
+            {
+                if (puzzles.Count > 1)
+                {
+                    GameObject firstPuzzle = puzzles[0];
+                    puzzles.RemoveAt(0);
+                    Shuffle(puzzles); 
+                    puzzles.Insert(0, firstPuzzle); 
+                }
+            }
+
+            else
+            {
+                Shuffle(puzzles);
+            }
+
             AssignPuzzle();
         }
     }
