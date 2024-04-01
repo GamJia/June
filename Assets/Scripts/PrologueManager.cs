@@ -5,14 +5,6 @@ using UnityEngine.Playables;
 
 public class PrologueManager : MonoBehaviour
 {
-    void Start()
-    {
-        if (PlayerPrefs.GetString("Prologue_" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name) == "true")
-        {
-            GetComponent<PlayableDirector>().enabled = false;
-            CinemachineManager.Instance.ChangeTarget(false);
-        }
-    }
 
     public void DeleteData()
     {

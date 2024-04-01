@@ -116,7 +116,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             PuzzleDataManager.SavePuzzleStates(puzzlesData);
             MMVibrationManager.Vibrate();
             GaugeManager.Instance.UpdateGauge();
-            AudioManager.Instance.PlaySFX(AudioID.Correct);        
+            AudioManager.Instance.PlaySFX(AudioID.Correct);      
         }
         else
         {

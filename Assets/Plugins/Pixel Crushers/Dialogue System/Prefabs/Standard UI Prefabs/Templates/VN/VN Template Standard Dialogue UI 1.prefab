@@ -4324,7 +4324,7 @@ GameObject:
   - component: {fileID: 22490942}
   - component: {fileID: 11423316}
   m_Layer: 5
-  m_Name: VN Template Standard Dialogue UI
+  m_Name: VN Template Standard Dialogue UI 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

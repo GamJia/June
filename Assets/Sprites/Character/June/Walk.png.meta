@@ -320,8 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d78f17a16a0460240bfe07fcebf3d7cd
-      internalID: 1570548313
+      spriteID: 513516283b6288b4fba078b459b381bb
+      internalID: -1149600428
       vertices: []
       indices: 
       edges: []
@@ -346,7 +346,7 @@ TextureImporter:
       Walk_6: -356432069
       Walk_7: 653316889
       Walk_8: 855912891
-      Walk_9: 1570548313
+      Walk_9: -1149600428
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

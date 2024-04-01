@@ -59,16 +59,11 @@ public class CinemachineManager : MonoBehaviour
         isDragging = dragging;
     }
 
-    public bool ChangeTarget(bool isAvailable)
+    public void ChangeTarget(bool isAvailable)
     {        
         if (cinemachineCamera != null)
         {
-            cinemachineCamera.Follow = isAvailable ? targetTransform : null;
-            return true;
-        }
-        else
-        {
-            return false;
+            cinemachineCamera.Follow = isAvailable ? null : targetTransform;
         }
     }
 
