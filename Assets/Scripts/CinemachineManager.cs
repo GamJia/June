@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class CinemachineManager : MonoBehaviour
 {
-    public Transform targetTransform; 
-    private CinemachineVirtualCamera cinemachineCamera;
+    [SerializeField] private CinemachineVirtualCamera cinemachineCamera;
+    [SerializeField] private Transform targetTransform; 
     private float minOrthographicSize = 0.9f; 
     private float maxOrthographicSize = 5.4f; 
     private float zoomSpeed = 0.1f; 
@@ -27,11 +27,11 @@ public class CinemachineManager : MonoBehaviour
         {
             instance = this;
         }
+        cinemachineCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
     void Start()
     {
-        cinemachineCamera = GetComponent<CinemachineVirtualCamera>();
         cinemachineCamera.m_Lens.OrthographicSize=5.4f;
         targetTransform = cinemachineCamera.Follow;
     }

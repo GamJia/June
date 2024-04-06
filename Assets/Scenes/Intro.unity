@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3.391803
+    OrthographicSize: 5.4
     NearClipPlane: 0
     FarClipPlane: 1000
     Dutch: 0
@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e229ba7ce049d5845a0f9f2674200f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinemachineCamera: {fileID: 0}
   targetTransform: {fileID: 0}
 --- !u!1 &186517035
 GameObject:
@@ -1427,7 +1428,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.391803
+  orthographic size: 5.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

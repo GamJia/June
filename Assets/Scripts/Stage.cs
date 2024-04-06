@@ -3,10 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement; 
+using System.IO;
+
+public enum StageType
+{
+    Tutorial,
+    MainGame
+}
 
 public class Stage : MonoBehaviour
 {
     [SerializeField] private GameObject puzzleGameObject;
+    [SerializeField] private StageType currentStageType = StageType.MainGame;
+
     public BoardStorage boardStorage;
     public GroupStorage groupStorage;
     public GroupID groupID= GroupID.Group_0; 
@@ -32,17 +41,23 @@ public class Stage : MonoBehaviour
 
             }
         }
+
         
     }
 
+
+    
+
     void Start()
     {
-        LoadPuzzle();
+        LoadPuzzle();        
     }
 
-    void LoadPuzzle()
+    public void LoadPuzzle()
     {
+        CheckStageType();
         puzzles.Clear();
+
         if (groupStorage != null)
         {
             boards = groupStorage.GetBoards(groupID);
@@ -55,22 +70,29 @@ public class Stage : MonoBehaviour
                     puzzles.AddRange(boardPuzzles);
                 }
             }
-            
-            if (SceneManager.GetActiveScene().buildIndex.Equals(1)) // For Prologue
-            {
-                if (puzzles.Count > 1)
-                {
-                    GameObject firstPuzzle = puzzles[0];
-                    puzzles.RemoveAt(0);
-                    Shuffle(puzzles); 
-                    puzzles.Insert(0, firstPuzzle); 
-                }
-            }
 
-            else
+            RectTransform rectTransform = GetComponent<RectTransform>();
+
+            switch (currentStageType)
             {
-                Shuffle(puzzles);
+                case StageType.Tutorial:
+                    puzzles = puzzles.GetRange(0, 7); 
+                    if(rectTransform != null)
+                    {
+                        rectTransform.pivot = new Vector2(0.5f, 1f);
+                    }
+                    break;
+                case StageType.MainGame:
+                    Shuffle(puzzles);
+
+                    if(rectTransform != null)
+                    {
+                        rectTransform.pivot = new Vector2(0, 1f);
+                    }
+                    break;
             }
+            
+            
 
             AssignPuzzle();
         }
@@ -93,12 +115,22 @@ public class Stage : MonoBehaviour
 
     private void AssignPuzzle()
     {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         foreach (GameObject puzzle in puzzles)
         {
             GameObject puzzleParentInstance = Instantiate(puzzleGameObject, this.transform.position, Quaternion.identity, this.transform);
             GameObject puzzleInstance = Instantiate(puzzle, puzzle.transform.position, puzzle.transform.rotation);
 
             RectTransform puzzleRectTransform = puzzleInstance.GetComponent<RectTransform>();
+            if (currentStageType == StageType.Tutorial)
+            {
+                puzzleInstance.AddComponent<TutorialPuzzle>();
+            }
+
             if (puzzleRectTransform != null)
             {
                 float width = puzzleRectTransform.rect.width;
@@ -122,6 +154,29 @@ public class Stage : MonoBehaviour
             }
 
             puzzleInstance.transform.SetParent(puzzleParentInstance.transform, false);
+            
+        }
+    }
+
+    public void CheckStageType()
+    {
+        string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
+
+        if (File.Exists(filePath))
+        {
+            string fileContents = File.ReadAllText(filePath);
+            if (!string.IsNullOrEmpty(fileContents) && fileContents != "null")
+            {
+                currentStageType = StageType.MainGame;
+            }
+            else
+            {
+                currentStageType = StageType.Tutorial;
+            }
+        }
+        else
+        {
+            currentStageType = StageType.Tutorial;
         }
     }
 
