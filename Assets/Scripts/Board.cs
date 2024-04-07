@@ -42,6 +42,8 @@ public class Board : MonoBehaviour
         
     }
 
+    
+
 
     void CheckPuzzleCompletion()
     {

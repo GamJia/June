@@ -67,6 +67,21 @@ public class CinemachineManager : MonoBehaviour
         }
     }
 
+    public void ItemTarget(GameObject target)
+    {
+        if (cinemachineCamera != null)
+        {
+            if (target != null)
+            {
+                cinemachineCamera.Follow = target.transform;
+            }
+            else
+            {
+                cinemachineCamera.Follow = null; 
+            }
+        }
+    }
+
     private void HandleMovement()
     {
         #if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR

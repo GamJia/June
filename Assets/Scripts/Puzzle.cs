@@ -14,6 +14,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     private RectTransform rectTransform;
     public BoardID boardID; 
     public bool isSolved;
+    private GameObject answer;
 
 
     void Awake()
@@ -66,6 +67,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         float currentCameraSize = Camera.main.orthographicSize;
         float sizeAdjustment = 5.4f / currentCameraSize; 
         rectTransform.sizeDelta = originalSize * sizeAdjustment;
+        ShowAnswer();
 
     }
 
@@ -131,7 +133,46 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             }
         }
 
+        HideAnswer();
+    }
 
+    public void ShowAnswer()
+    {
+        if(PlayerPrefs.GetInt("IsItemAvailable", 0) == 1) 
+        {
+            Board targetBoard = Board.FindBoardByBoardID(boardID);
+            if(targetBoard!=null&&answer==null)
+            {
+                answer=Instantiate(this.gameObject,targetBoard.transform);
+                RectTransform answerRectTransform=answer.GetComponent<RectTransform>();
+                answerRectTransform.anchoredPosition = originalPosition-targetBoard.currentPosition;
+                answerRectTransform.sizeDelta = originalSize;
+
+                Animator puzzleAnimator=answer.GetComponent<Animator>();
+                if(puzzleAnimator!=null)
+                {
+                    puzzleAnimator.SetTrigger("IsUsingItem");
+                }
+
+                CinemachineManager.Instance.ItemTarget(answer);
+                
+            }        
+        }
+        
+        
+    }
+
+    public void HideAnswer()
+    {
+        if(PlayerPrefs.GetInt("IsItemAvailable", 0) == 1) 
+        {
+            if(answer!=null)
+            {
+                Destroy(answer);
+            }
+            CinemachineManager.Instance.ItemTarget(null);
+        }
+        
     }
     
 }
