@@ -58,6 +58,7 @@ public class Item : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("IsItemAvailable", 0); 
+        CinemachineManager.Instance.ItemTarget(null);
     }
 
 

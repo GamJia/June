@@ -13,7 +13,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     private Vector2 currentSize;
     private RectTransform rectTransform;
     public BoardID boardID; 
-    public bool isSolved;
+    private bool isSolved;
     private GameObject answer;
 
 
@@ -39,14 +39,10 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             isSolved = puzzleData.isSolved;
             if(isSolved)
             {
-                if (transform.parent != null)
-                {
-                    transform.parent.gameObject.SetActive(false);
-                }
                 Board targetBoard = Board.FindBoardByBoardID(boardID);
                 if (targetBoard != null)
                 {                
-                    targetBoard.CorrectPuzzle(this.gameObject, originalPosition,originalSize);
+                    targetBoard.CorrectPuzzle(this.gameObject, originalPosition,originalSize,true);
                 }
 
             }
@@ -96,16 +92,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
         if (distance <= 30f&& currentGaugeValue > 0)
         {
-            if (transform.parent != null)
-            {
-                transform.parent.gameObject.SetActive(false);
-            }
-            Board targetBoard = Board.FindBoardByBoardID(boardID);
-            if (targetBoard != null)
-            {                
-                targetBoard.CorrectPuzzle(this.gameObject, originalPosition,originalSize);
-            }
-
+            
             isSolved = true;
             var puzzlesData = PuzzleDataManager.LoadPuzzleStates();
             var puzzleData = puzzlesData.Find(p => p.puzzleName == gameObject.name);
@@ -113,12 +100,25 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             if (puzzleData == null)
             {
                 puzzlesData.Add(new PuzzleData { puzzleName = gameObject.name, isSolved = true });
+
+                Board targetBoard = Board.FindBoardByBoardID(boardID);
+                if (targetBoard != null)
+                {                
+                    targetBoard.CorrectPuzzle(this.gameObject, originalPosition,originalSize,false);
+                }
             }
 
             else
             {
                 puzzleData.isSolved = true;
+                
+                Board targetBoard = Board.FindBoardByBoardID(boardID);
+                if (targetBoard != null)
+                {                
+                    targetBoard.CorrectPuzzle(this.gameObject, originalPosition,originalSize,true);
+                }
             }
+
             PuzzleDataManager.SavePuzzleStates(puzzlesData);
             MMVibrationManager.Vibrate();
             GaugeManager.Instance.UpdateGauge();
