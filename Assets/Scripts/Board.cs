@@ -23,11 +23,6 @@ public class Board : MonoBehaviour
     public void CorrectPuzzle(GameObject puzzle, Vector2 puzzlePosition, Vector2 puzzleSize,bool isCorrect)
     {
         RectTransform puzzleRectTransform = puzzle.GetComponent<RectTransform>();
-        // Animator puzzleAnimator=puzzle.GetComponent<Animator>();
-        // if(puzzleAnimator!=null)
-        // {
-        //     puzzleAnimator.SetTrigger("IsCorrect");
-        // }
         if (puzzle.transform.parent != null)
         {
             puzzle.transform.parent.gameObject.SetActive(false);
@@ -47,13 +42,16 @@ public class Board : MonoBehaviour
                 {
                     puzzleAnimator.SetTrigger("IsCorrect");
                 }
-            }         
+                //puzzleAnimator.enabled=false;
+
+            }     
             
             Image puzzleImage = puzzleRectTransform.GetComponent<Image>();
             if (puzzleImage != null)
             {
                 puzzleImage.raycastTarget = false;
             }
+
         }
 
         CheckPuzzleCompletion();

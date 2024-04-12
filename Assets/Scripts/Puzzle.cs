@@ -164,14 +164,11 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
     public void HideAnswer()
     {
-        if(PlayerPrefs.GetInt("IsItemAvailable", 0) == 1) 
+        if(answer!=null)
         {
-            if(answer!=null)
-            {
-                Destroy(answer);
-            }
-            CinemachineManager.Instance.ItemTarget(null);
+            Destroy(answer);
         }
+        CinemachineManager.Instance.ItemTarget(null);
         
     }
     
