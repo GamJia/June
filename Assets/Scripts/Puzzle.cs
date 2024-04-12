@@ -76,7 +76,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             if (RectTransformUtility.ScreenPointToWorldPointInRectangle(canvasRectTransform, eventData.position, eventData.pressEventCamera, out worldPoint))
             {
                 transform.position = worldPoint;
-                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0); 
+                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y+100, 0); 
             }
         }
 
@@ -84,7 +84,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, 0));
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y+100, 0));
         Vector3 currentPosition = new Vector3(mousePosition.x * 100, mousePosition.y * 100, 0);
 
         float distance = Vector3.Distance(currentPosition, originalPosition);

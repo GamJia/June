@@ -58,10 +58,9 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     portrait: {fileID: 0}
-    spritePortrait: {fileID: 0}
+    spritePortrait: {fileID: 21300000, guid: 0aa0dc5438872e9449a2f2947c059275, type: 3}
     alternatePortraits: []
     spritePortraits:
-    - {fileID: 21300000, guid: 0aa0dc5438872e9449a2f2947c059275, type: 3}
     - {fileID: 21300000, guid: 5033e9783a4b7884a85150db7baec2af, type: 3}
   - id: 2
     fields:
@@ -90,11 +89,70 @@ MonoBehaviour:
       type: 0
       typeString: 
     portrait: {fileID: 0}
-    spritePortrait: {fileID: 0}
+    spritePortrait: {fileID: 21300000, guid: 52506a81ac585c743bfa1b03c9c05866, type: 3}
     alternatePortraits: []
     spritePortraits:
-    - {fileID: 21300000, guid: 52506a81ac585c743bfa1b03c9c05866, type: 3}
     - {fileID: 21300000, guid: c609631156eaf3444aa03b9c815d49d7, type: 3}
+  - id: 3
+    fields:
+    - title: Name
+      value: June Narration
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Pictures
+      value: '[]'
+      type: 3
+      typeString: CustomFieldType_Files
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: IsPlayer
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Display Name
+      value: 'June '
+      type: 0
+      typeString: 
+    - title: NodeColor
+      value: '#383089ff'
+      type: 0
+      typeString: 
+    portrait: {fileID: 0}
+    spritePortrait: {fileID: 0}
+    alternatePortraits: []
+    spritePortraits: []
+  - id: 4
+    fields:
+    - title: Name
+      value: God Narration
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Pictures
+      value: '[]'
+      type: 3
+      typeString: CustomFieldType_Files
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: IsPlayer
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Display Name
+      value: "\uD37C\uC990\uC758 \uC2E0"
+      type: 0
+      typeString: 
+    - title: NodeColor
+      value: '#734c23ff'
+      type: 0
+      typeString: 
+    portrait: {fileID: 0}
+    spritePortrait: {fileID: 0}
+    alternatePortraits: []
+    spritePortraits: []
   items: []
   locations: []
   variables:
@@ -249,7 +307,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[pic=2]\uD734, \uB4DC\uB514\uC5B4 \uD1F4\uADFC\uC774\uB2E4.."
+        value: "\uD734, \uB4DC\uB514\uC5B4 \uD1F4\uADFC\uC774\uB2E4.."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -308,8 +366,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[pic=2]\uC624\uB298\uB3C4 \uBD80\uC7A5\uC774 \uC9D6\uC5B4\uB300\uC11C
-          \uBA38\uB9AC \uD130\uC9C8 \uAC83 \uAC19\uC544... \uC9C4\uC9DC \uD53C\uACE4\uD574."
+        value: "\uC624\uB298\uB3C4 \uBD80\uC7A5\uC774 \uC9D6\uC5B4\uB300\uC11C \uBA38\uB9AC
+          \uD130\uC9C8 \uAC83 \uAC19\uC544... \uC9C4\uC9DC \uD53C\uACE4\uD574."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -364,9 +422,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[pic=3]\uBB50\uC9C0? \uC9C0\uD558\uCCA0\uC5ED\uC774 \uB9C8\uCE58
-          \uD37C\uC990 \uC870\uAC01\uCC98\uB7FC \uC0B0\uC0B0\uC774 \uBD80\uC11C\uC838
-          \uC788\uC796\uC544..."
+        value: "[pic=2]\uC774\uAC8C \uBB50\uC57C? \uC9C0\uD558\uCCA0\uC5ED\uC774
+          \uC644\uC804\uD788 \uC0B0\uC0B0\uC870\uAC01 \uB0AC\uC796\uC544!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -421,7 +478,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[pic=2]\uB180\uB77C\uC6C0\uC744 \uAE08\uCE58 \uBABB\uD558\uACA0\uC9C0\uB9CC,
+        value: "\uB180\uB77C\uC6C0\uC744 \uAE08\uCE58 \uBABB\uD558\uACA0\uC9C0\uB9CC,
           \uB124 \uB208\uC740 \uC9C4\uC2E4\uC744 \uBCF4\uACE0 \uC788\uB2E4. \uC778\uAC04\uC774\uC5EC."
         type: 0
         typeString: CustomFieldType_Text
@@ -481,7 +538,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[pic=3]\uB2F9\uC2E0\uC740... \uB204\uAD6C\uC2E0\uAC00\uC694?"
+        value: "[pic=2]\uB2F9\uC2E0\uC740... \uB204\uAD6C\uC2E0\uAC00\uC694?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -524,7 +581,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 2
+        value: 4
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -544,7 +601,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: SetPanel(God Narration,0)
         type: 0
         typeString: CustomFieldType_Text
       - title: EventGuid
@@ -599,7 +656,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 2
+        value: 4
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -644,7 +701,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1239.699
-        y: 401.74835
+        y: 400.31982
         width: 160
         height: 30
     - id: 8
@@ -658,7 +715,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 2
+        value: 4
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -716,7 +773,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 1
+        value: 3
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -773,7 +830,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 2
+        value: 4
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -831,7 +888,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 2
+        value: 4
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -893,7 +950,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 2
+        value: 4
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -960,7 +1017,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[pic=2]\uC774\uB807\uAC8C \uD558\uBA74 \uB418\uB098\uC694?"
+        value: "\uC774\uB807\uAC8C \uD558\uBA74 \uB418\uB098\uC694?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1049,7 +1106,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1459.7107
-        y: 147.46945
+        y: 146.04086
         width: 160
         height: 30
     - id: 25
@@ -1075,9 +1132,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[pic=2]\uC774\uC81C \uC7A0\uAE50, \uC5EC\uAE30\uB97C \uBD10\uC8FC\uAC8C.
-          \uC774\uAC83\uC740 \uB0B4 \uD604\uC7AC \uD798\uC758 \uC0C1\uD0DC\uB97C
-          \uB098\uD0C0\uB0B4\uB294 \uAC83\uC778\uB370, \uBCF4\uB2E4\uC2DC\uD53C \uC9C0\uAE08
+        value: "[pic=2]\uADF8\uB9AC\uACE0 \uD604\uC7AC \uC67C\uCABD\uC5D0 \uBCF4\uC774\uB294
+          \uAC83\uC774 \uB0B4 \uD798\uC758 \uC0C1\uD0DC\uB97C \uC218\uCE58\uD654\uD558\uC5EC
+          \uB098\uD0C0\uB0B8 \uAC83\uC778\uB370, \uBCF4\uB2E4\uC2DC\uD53C \uC9C0\uAE08
           \uD798\uC774 \uAC70\uC758 \uBC14\uB2E5\uB0AC\uB2E4."
         type: 0
         typeString: CustomFieldType_Text
@@ -1137,11 +1194,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[pic=2]\uADF8\uB798\uB3C4 \uC7A0\uC2DC \uB3D9\uC548 \uD55C\uC228
-          \uB3CC\uB9B4 \uC218 \uC788\uAC8C \uB410\uC73C\uB2C8, \uACE0\uB9C8\uC6C0\uC744
-          \uD45C\uD558\uACE0\uC790, \uB0B4\uAC00 \uAC00\uC9C4 \uB9C8\uC9C0\uB9C9
-          \uD798\uC744 \uBAA8\uC544 \uB9CC\uB4E0 \uD2B9\uBCC4\uD55C \uC544\uC774\uD15C\uC744
-          \uC120\uBB3C\uB85C \uC8FC\uACA0\uB2E4. "
+        value: "[pic=2]\uADF8\uB798\uB3C4 \uC544\uC9C1 \uC4F8 \uC218 \uC788\uB294
+          \uC5D0\uB108\uC9C0\uAC00 \uC870\uAE08\uC774\uB77C\uB3C4 \uB0A8\uC558\uC73C\uB2C8,
+          \uB0B4\uAC00 \uAC00\uC9C4 \uB9C8\uC9C0\uB9C9 \uD798\uC744 \uBAA8\uC544
+          \uB9CC\uB4E0 \uD2B9\uBCC4\uD55C \uC544\uC774\uD15C\uC744 \uC120\uBB3C\uB85C
+          \uC8FC\uACA0\uB2E4. "
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1414,8 +1471,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 901.97876, y: 0}
-    canvasZoom: 0.7
+    canvasScrollPosition: {x: 991.68384, y: 64.46391}
+    canvasZoom: 0.96999973
   syncInfo:
     syncActors: 0
     syncItems: 0

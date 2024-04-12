@@ -11,6 +11,7 @@ public class PrologueManager : MonoBehaviour
         PlayerPrefs.SetString("Prologue_" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, "false");
         
         PlayerPrefs.DeleteKey("IsItemAvailable");
+        PlayerPrefs.DeleteKey("ItemQuantity");
 
         string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
         if (System.IO.File.Exists(filePath))
