@@ -7,11 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UIImage_Static_Outline_Alpha_Decay
+  m_Name: Outline
   m_Shader: {fileID: 4800000, guid: aab189ad51b0aa44d97d68b6edda68ed, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - DecayImage
   - _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -65,7 +64,7 @@ Material:
     - _BumpScale: 1
     - _ColorMask: 15
     - _Cutoff: 0.5
-    - _DecayImage: 1
+    - _DecayImage: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -74,7 +73,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.001
+    - _OutlineWidth: 0.01
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

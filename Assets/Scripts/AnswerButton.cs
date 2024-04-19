@@ -41,6 +41,18 @@ public class AnswerButton : MonoBehaviour
         timerText.gameObject.SetActive(false);
 
         float itemQuantity = PlayerPrefs.GetFloat("ItemQuantity", 0);
+        int isItemAvailable = PlayerPrefs.GetInt("IsItemAvailable", 0);
+        int lastItemTime = PlayerPrefs.GetInt("LastItemTime", 30); 
+
+        if(lastItemTime>0&&isItemAvailable.Equals(1))
+        {
+            if (itemCoroutine != null)
+            {
+                StopCoroutine(itemCoroutine);
+            }
+            itemCoroutine = StartCoroutine(ItemCoroutine(lastItemTime));
+
+        }
 
         if (itemQuantity >= 1)
         {
@@ -54,12 +66,15 @@ public class AnswerButton : MonoBehaviour
             {
                 countText.text = itemQuantity.ToString();
             }
-        }
+        }      
+        
         else
         {
             countText.gameObject.SetActive(false);
             itemIcon.sprite = itemIcons[0]; 
         }
+
+        
     }
 
     public void TutorialItem()
@@ -67,8 +82,23 @@ public class AnswerButton : MonoBehaviour
         float itemQuantity=PlayerPrefs.GetFloat("ItemQuantity",0);
         PlayerPrefs.SetFloat("ItemQuantity", itemQuantity+1);
         PlayerPrefs.SetInt("IsItemAvailable", 1); 
-        
-        InitializeItems();
+
+        countText.gameObject.SetActive(true);
+        countText.text = "1";
+
+        timerText.gameObject.SetActive(true);
+        timerText.text="99:99";
+
+        Image itemIcon=GetComponent<Image>();
+        itemIcon.sprite = itemIcons[1]; 
+    }
+
+    public void AddItem()
+    {
+        float itemQuantity=PlayerPrefs.GetFloat("ItemQuantity",0);
+        PlayerPrefs.SetFloat("ItemQuantity", itemQuantity+1);
+
+        StartItemCoroutine();
     }
 
     public void StartItemCoroutine()
@@ -80,24 +110,27 @@ public class AnswerButton : MonoBehaviour
         {
             if(itemCoroutine!=null)
             {
-                StopCoroutine(ItemCoroutine());
+                StopCoroutine(itemCoroutine);
             }
             
-            PlayerPrefs.SetFloat("ItemQuantity", itemQuantity-1);
-            PlayerPrefs.SetInt("IsItemAvailable", 1); 
-            itemCoroutine=StartCoroutine(ItemCoroutine());
+            itemCoroutine=StartCoroutine(ItemCoroutine(60));
+
         }
     }
 
-    private IEnumerator ItemCoroutine()
+    private IEnumerator ItemCoroutine(int remainingTime)
     {    
         float elapsedTime=0;
         timerText.gameObject.SetActive(true);
+        PlayerPrefs.SetInt("IsItemAvailable", 1);
+        PlayerPrefs.SetFloat("ItemQuantity", Mathf.Max(0, PlayerPrefs.GetFloat("ItemQuantity", 0) - 1));
 
-        while(elapsedTime<30f)
+        while(elapsedTime<remainingTime)
         {
-            timerText.text = $"0:{(int)(30 - elapsedTime):D2}";
-            yield return new WaitForSeconds(1f);
+            int timeLeft = Mathf.Max(0, (int)(remainingTime - elapsedTime));
+            timerText.text = $"0:{timeLeft:D2}";
+            PlayerPrefs.SetInt("LastItemTime", timeLeft); 
+            yield return new WaitForSeconds(1f); 
             elapsedTime++;
         }
 
@@ -107,9 +140,6 @@ public class AnswerButton : MonoBehaviour
 
         InitializeItems();
     }
-
-
-
 
 
 }

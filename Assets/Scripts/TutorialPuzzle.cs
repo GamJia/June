@@ -26,7 +26,7 @@ public class TutorialPuzzle : MonoBehaviour,IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, 0));
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y+100, 0));
         Vector3 currentPosition = new Vector3(mousePosition.x * 100, mousePosition.y * 100, 0);
 
         float distance = Vector3.Distance(currentPosition, originalPosition);
@@ -42,7 +42,27 @@ public class TutorialPuzzle : MonoBehaviour,IEndDragHandler
             }
         }
         
+    }
 
+    void OnApplicationQuit()
+    {
+        int puzzleCompleteCount = DialogueLua.GetVariable("PuzzleComplete").asInt;
+        if (puzzleCompleteCount < 6)
+        {
+            PlayerPrefs.SetString("Prologue_" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, "false");
+            PlayerPrefs.DeleteKey("IsItemAvailable");
+            PlayerPrefs.DeleteKey("ItemQuantity");
+            PlayerPrefs.DeleteKey("LastItemTime");
+
+            string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+                Debug.Log("PuzzleData.json deleted successfully.");
+            }
+        }
+
+        
     }
     
 }

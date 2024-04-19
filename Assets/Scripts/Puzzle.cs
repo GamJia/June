@@ -15,6 +15,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     public BoardID boardID; 
     private bool isSolved;
     private GameObject answer;
+    private Transform parentTransform;
 
 
     void Awake()
@@ -31,6 +32,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     void Start()
     {
         currentSize = rectTransform.sizeDelta;
+        parentTransform = transform.parent;
 
         var puzzlesData = PuzzleDataManager.LoadPuzzleStates();
         var puzzleData = puzzlesData.Find(p => p.puzzleName == gameObject.name);
@@ -53,6 +55,9 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             gameObject.AddComponent<EventTriggerManager>();
         }
 
+
+
+
               
     }
 
@@ -63,8 +68,10 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         float currentCameraSize = Camera.main.orthographicSize;
         float sizeAdjustment = 5.4f / currentCameraSize; 
         rectTransform.sizeDelta = originalSize * sizeAdjustment;
-        ShowAnswer();
 
+        ScrollView.Instance.SetAlpha(this.gameObject);
+
+        ShowAnswer();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -89,6 +96,8 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
         float distance = Vector3.Distance(currentPosition, originalPosition);
         float currentGaugeValue = PlayerPrefs.GetFloat("CurrentGaugeValue", 0);
+
+        ScrollView.Instance.ResetAlpha(this.gameObject,parentTransform);
 
         if (distance <= 30f&& currentGaugeValue > 0)
         {
@@ -135,6 +144,18 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
         HideAnswer();
     }
+
+    void SetAlpha(float imageAlpha)
+    {
+        Image puzzleImage = GetComponent<Image>();
+        if (puzzleImage != null)
+        {
+            Color color = puzzleImage.color;
+            color.a = imageAlpha;
+            puzzleImage.color = color;
+        }
+    }
+
 
     public void ShowAnswer()
     {
