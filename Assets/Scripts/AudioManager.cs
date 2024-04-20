@@ -15,13 +15,23 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (null == instance)
+        if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject); 
+        }
+        else
+        {
+            if (_bgm.clip != instance._bgm.clip)
+            {
+                instance._bgm.clip = _bgm.clip;  
+                instance._bgm.Play(); 
+            }
+            Destroy(gameObject); 
         }
         
     }
-
+    
     public void PlayBGM()
     {
         _bgm.Play();

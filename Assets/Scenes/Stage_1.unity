@@ -981,7 +981,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1564864849}
   m_HandleRect: {fileID: 1564864847}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1184,7 +1184,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 778521102cfa6724bac399a641666d57, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c8cab284fe0d2b9468325bcb70e86c88, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1348,7 +1348,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.782424
+  orthographic size: 2.671154
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2026,7 +2026,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 2.782424
+    OrthographicSize: 2.671154
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

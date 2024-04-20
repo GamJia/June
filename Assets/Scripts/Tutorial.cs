@@ -1,61 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using PixelCrushers.DialogueSystem; 
-using UnityEngine.Playables;
 using UnityEngine;
-using System.IO;
+using UnityEngine.EventSystems; 
 
-public class Tutorial : MonoBehaviour
+public class Tutorial : MonoBehaviour, IPointerClickHandler
 {
-    private PlayableDirector tutorialDirector; 
+    private int clickCount = 0; 
+    [SerializeField] private GameObject illustrationButton;
 
-    public void Start()
+    private void Start()
     {
-        tutorialDirector = GetComponent<PlayableDirector>(); 
+        UpdateChildren();
+    }
 
-        string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        clickCount++;
+        UpdateChildren(); 
+    }
 
-        if (File.Exists(filePath))
+    private void UpdateChildren()
+    {
+        if (clickCount < transform.childCount)
         {
-            string fileContents = File.ReadAllText(filePath);
-            if (!string.IsNullOrEmpty(fileContents) && fileContents != "null")
+            for (int i = 0; i < transform.childCount; i++)
             {
-                if (tutorialDirector != null)
-                {
-                    tutorialDirector.enabled = false;
-                    CinemachineManager.Instance.ChangeTarget(true);
-                }
+                transform.GetChild(i).gameObject.SetActive(i == clickCount);
             }
+        }
+
+        else
+        {
+            gameObject.SetActive(false); 
         }
 
     }
 
-    // public void StartQuest()
-    // {
-    //     StartCoroutine(CheckQuest());
-    // }
-    
-    // private IEnumerator CheckQuest()
-    // {
-    //     string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
-        
-    //     while (true)
-    //     {
-    //         if (File.Exists(filePath))
-    //         {
-    //             string fileContents = File.ReadAllText(filePath);
-    //             if (!string.IsNullOrEmpty(fileContents) && fileContents != "null")
-    //             {
-    //                 // If the content of the file is not null, change the quest to a success state and exit the loop
-    //                 DialogueLua.SetVariable("IsTutorialComplete", "True");
-    //                 DialogueManager.StartConversation("Tutorial",null,null,12);
-    //                 Debug.Log("Tutorial quest set to Success because PuzzleData is not null.");
-    //                 break; 
-    //             }
-    //         }
-            
-    //         // Check every 1 second
-    //         yield return new WaitForSeconds(0.5f);
-    //     }
-    // }
 }

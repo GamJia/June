@@ -4,19 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private int sceneIndex; 
     void Start()
     {
-        if (PlayerPrefs.HasKey("SavedSceneIndex"))
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex.Equals(0))
         {
-            GetComponentInChildren<Text>().text = "이어하기";
+            if (PlayerPrefs.HasKey("SavedSceneIndex"))
+            {
+                GetComponentInChildren<Text>().text = "이어하기";
+            }
+            else
+            {
+                GetComponentInChildren<Text>().text = "처음부터";
+            }
         }
-        else
-        {
-            GetComponentInChildren<Text>().text = "처음부터";
-        }
+        
 
     }
 

@@ -5,8 +5,9 @@ using System;
 
 public enum AudioID
 {
+    Intro,
+    Main,
     Correct,
-    Merge
 }
 
 [CreateAssetMenu]

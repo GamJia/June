@@ -31,7 +31,7 @@ public class TutorialPuzzle : MonoBehaviour,IEndDragHandler
 
         float distance = Vector3.Distance(currentPosition, originalPosition);
 
-        if (distance <= 30f)
+        if (distance <= 40f)
         {
             int currentPuzzleComplete = DialogueLua.GetVariable("PuzzleComplete").asInt;
             currentPuzzleComplete++;

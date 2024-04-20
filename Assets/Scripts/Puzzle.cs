@@ -99,7 +99,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
         ScrollView.Instance.ResetAlpha(this.gameObject,parentTransform);
 
-        if (distance <= 30f&& currentGaugeValue > 0)
+        if (distance <= 40f&& currentGaugeValue > 0)
         {
             
             isSolved = true;
@@ -173,6 +173,25 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
                 if(puzzleAnimator!=null)
                 {
                     puzzleAnimator.SetTrigger("IsUsingItem");
+                }
+
+                GameObject cameraPrefab = Resources.Load<GameObject>("Prefabs/Camera");
+                if (cameraPrefab != null)
+                {
+                    GameObject cameraInstance = Instantiate(cameraPrefab, answer.transform);
+                    RectTransform cameraRectTransform = cameraInstance.GetComponent<RectTransform>();
+
+                    // Calculate the new dimensions based on the larger dimension of 'answer'
+                    float newWidth = answerRectTransform.sizeDelta.x + 50;
+                    float newHeight = answerRectTransform.sizeDelta.y + 50;
+
+                    // Set the dimensions of the camera prefab
+                    cameraRectTransform.sizeDelta = new Vector2(newWidth, newHeight);
+                }
+
+                else
+                {
+                    Debug.Log("없음");
                 }
 
                 CinemachineManager.Instance.ItemTarget(answer);

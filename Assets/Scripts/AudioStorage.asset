@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: AudioStorage
   m_EditorClassIdentifier: 
   audioSrcs:
-  - _audioFile: {fileID: 8300000, guid: 2443278c6b6b38746a2209064f03ef3a, type: 3}
+  - _audioFile: {fileID: 8300000, guid: 61c8d606db3b38544819be09194945d2, type: 3}
     _audioId: 0
+  - _audioFile: {fileID: 8300000, guid: c8cab284fe0d2b9468325bcb70e86c88, type: 3}
+    _audioId: 1
+  - _audioFile: {fileID: 8300000, guid: 2443278c6b6b38746a2209064f03ef3a, type: 3}
+    _audioId: 2
