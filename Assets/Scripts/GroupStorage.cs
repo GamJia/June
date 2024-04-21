@@ -46,7 +46,7 @@ public class GroupStorage : ScriptableObject
         }
     }
 
-    public List<GameObject> GetBoards(GroupID id) 
+    public List<GameObject> GetGroup(GroupID id) 
     {
 
         if (groupDictionary.Count.Equals(0))

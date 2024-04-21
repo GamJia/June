@@ -14,7 +14,7 @@ public class Group : MonoBehaviour
 
     void InstantiateGroupItems()
     {
-        List<GameObject> groupItems = groupStorage.GetBoards(groupID);
+        List<GameObject> groupItems = groupStorage.GetGroup(groupID);
 
         if (groupItems != null)
         {

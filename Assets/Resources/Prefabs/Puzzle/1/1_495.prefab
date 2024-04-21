@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4805548873481684770}
   - component: {fileID: 4805548873481684780}
-  - component: {fileID: 9072480508716003839}
   - component: {fileID: 4805548873481684781}
   - component: {fileID: -541474183298783760}
   m_Layer: 0
@@ -48,20 +47,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4805548873481684771}
   m_CullTransparentMesh: 1
---- !u!114 &9072480508716003839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4805548873481684771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8d3b9ee74b39343b8573d9228e0f9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boardID: 7
-  isSolved: 0
 --- !u!114 &4805548873481684781
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,13 +14,13 @@ public enum StageType
 public class Stage : MonoBehaviour
 {
     [SerializeField] private GameObject puzzleGameObject;
-    [SerializeField] private StageType currentStageType = StageType.MainGame;
+    private StageType currentStageType=StageType.MainGame;
 
     public BoardStorage boardStorage;
     public GroupStorage groupStorage;
     public GroupID groupID= GroupID.Group_0; 
-    [SerializeField] private List<GameObject> boards = new List<GameObject>();
-    [SerializeField] private List<GameObject> puzzles = new List<GameObject>();
+    private List<GameObject> boards = new List<GameObject>();
+    private List<GameObject> puzzles = new List<GameObject>();
 
     public static Stage Instance => instance;
     private static Stage instance;
@@ -34,7 +34,7 @@ public class Stage : MonoBehaviour
 
         if(groupStorage != null)
         {
-            boards = groupStorage.GetBoards(groupID); 
+            boards = groupStorage.GetGroup(groupID); 
             foreach (GameObject boardObject in boards)
             {
                 boardObject.GetComponent<Image>().color = new Color(0.3f,0.3f,0.3f,1f);
@@ -46,8 +46,6 @@ public class Stage : MonoBehaviour
     }
 
 
-    
-
     void Start()
     {
         LoadPuzzle();        
@@ -55,12 +53,23 @@ public class Stage : MonoBehaviour
 
     public void LoadPuzzle()
     {
-        CheckStageType();
         puzzles.Clear();
+
+        string key = SceneManager.GetActiveScene().name + "StageType";
+        int stageType = PlayerPrefs.GetInt(key, (int)StageType.MainGame);
+        currentStageType = (StageType)stageType;
+        
+        string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
+
+        if (!System.IO.File.Exists(filePath))
+        {
+            currentStageType = StageType.Tutorial;
+            SaveStageType(); 
+        }            
 
         if (groupStorage != null)
         {
-            boards = groupStorage.GetBoards(groupID);
+            boards = groupStorage.GetGroup(groupID);
             foreach (GameObject boardObject in boards)
             {
                 Board boardComponent = boardObject.GetComponent<Board>();
@@ -126,10 +135,28 @@ public class Stage : MonoBehaviour
             GameObject puzzleInstance = Instantiate(puzzle, puzzle.transform.position, puzzle.transform.rotation);
 
             RectTransform puzzleRectTransform = puzzleInstance.GetComponent<RectTransform>();
-            if (currentStageType == StageType.Tutorial)
+            BoardID boardID = boardStorage.GetPuzzle(puzzle);
+
+            switch (currentStageType)
             {
-                puzzleInstance.AddComponent<TutorialPuzzle>();
+                case StageType.Tutorial:
+                    TutorialPuzzle tutorialPuzzle = puzzleInstance.GetComponent<TutorialPuzzle>();
+                    if (tutorialPuzzle == null)
+                    {
+                        tutorialPuzzle = puzzleInstance.AddComponent<TutorialPuzzle>();
+                    }
+                    tutorialPuzzle.boardID = boardID;
+                    break;
+                case StageType.MainGame:
+                    Puzzle puzzleComponent = puzzleInstance.GetComponent<Puzzle>();
+                    if (puzzleComponent == null)
+                    {                                              
+                        puzzleComponent = puzzleInstance.AddComponent<Puzzle>();
+                    }
+                    puzzleComponent.boardID = boardID;
+                    break;
             }
+            
 
             if (puzzleRectTransform != null)
             {
@@ -158,26 +185,27 @@ public class Stage : MonoBehaviour
         }
     }
 
-    public void CheckStageType()
-    {
-        string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
 
-        if (File.Exists(filePath))
+    public void ChangeStageType()
+    {
+        if (currentStageType == StageType.Tutorial)
         {
-            string fileContents = File.ReadAllText(filePath);
-            if (!string.IsNullOrEmpty(fileContents) && fileContents != "null")
-            {
-                currentStageType = StageType.MainGame;
-            }
-            else
-            {
-                currentStageType = StageType.Tutorial;
-            }
+            currentStageType = StageType.MainGame;
         }
         else
         {
             currentStageType = StageType.Tutorial;
         }
+
+        SaveStageType();
+        LoadPuzzle();
+    }
+
+    private void SaveStageType()
+    {
+        string key = SceneManager.GetActiveScene().name + "StageType";
+        PlayerPrefs.SetInt(key, (int)currentStageType);
+        PlayerPrefs.Save();
     }
 
     public void GroupCompleted()

@@ -55,10 +55,6 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             gameObject.AddComponent<EventTriggerManager>();
         }
 
-
-
-
-              
     }
 
   
@@ -95,7 +91,7 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         Vector3 currentPosition = new Vector3(mousePosition.x * 100, mousePosition.y * 100, 0);
 
         float distance = Vector3.Distance(currentPosition, originalPosition);
-        float currentGaugeValue = PlayerPrefs.GetFloat("CurrentGaugeValue", 0);
+        int currentGaugeValue = PlayerPrefs.GetInt("CurrentGaugeValue", 0);
 
         ScrollView.Instance.ResetAlpha(this.gameObject,parentTransform);
 
@@ -130,8 +126,9 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
             PuzzleDataManager.SavePuzzleStates(puzzlesData);
             MMVibrationManager.Vibrate();
+            AudioManager.Instance.PlaySFX(AudioID.Correct);  
             GaugeBar.Instance.UpdateGauge();
-            AudioManager.Instance.PlaySFX(AudioID.Correct);     
+  
         }
         else
         {
@@ -143,17 +140,6 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         }
 
         HideAnswer();
-    }
-
-    void SetAlpha(float imageAlpha)
-    {
-        Image puzzleImage = GetComponent<Image>();
-        if (puzzleImage != null)
-        {
-            Color color = puzzleImage.color;
-            color.a = imageAlpha;
-            puzzleImage.color = color;
-        }
     }
 
 
@@ -181,17 +167,11 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
                     GameObject cameraInstance = Instantiate(cameraPrefab, answer.transform);
                     RectTransform cameraRectTransform = cameraInstance.GetComponent<RectTransform>();
 
-                    // Calculate the new dimensions based on the larger dimension of 'answer'
+                    
                     float newWidth = answerRectTransform.sizeDelta.x + 50;
                     float newHeight = answerRectTransform.sizeDelta.y + 50;
 
-                    // Set the dimensions of the camera prefab
                     cameraRectTransform.sizeDelta = new Vector2(newWidth, newHeight);
-                }
-
-                else
-                {
-                    Debug.Log("없음");
                 }
 
                 CinemachineManager.Instance.ItemTarget(answer);

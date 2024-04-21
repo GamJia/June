@@ -5,37 +5,30 @@ using UnityEngine.UI;
 
 public class GaugeBar : MonoBehaviour
 {
-    public Slider gaugeSlider; 
-    public float increaseInterval = 60f; 
-    public int increaseAmount = 1; 
+    public Slider gaugeSlider;
+    public float increaseInterval = 60f;
+    public int increaseAmount = 1;
     private float timer = 0f;
+    private Coroutine gaugeCoroutine = null;
+
+    [SerializeField] private Text countText;
+    [SerializeField] private Text timerText;
 
     public static GaugeBar Instance => instance;
     private static GaugeBar instance;
-    
+
     void Awake()
     {
         if (null == instance)
         {
             instance = this;
         }
-        gaugeSlider=GetComponent<Slider>();
+        gaugeSlider = GetComponent<Slider>();
     }
 
     void Start()
     {
-        LoadGauge(); 
-    }
-
-    void Update()
-    {
-        timer += Time.deltaTime;
-
-        if (timer >= increaseInterval)
-        {
-            gaugeSlider.value = Mathf.Min(gaugeSlider.value + increaseAmount, gaugeSlider.maxValue);
-            timer = 0f;
-        }
+        LoadGauge();
     }
 
     void OnApplicationFocus(bool hasFocus)
@@ -44,7 +37,6 @@ public class GaugeBar : MonoBehaviour
         {
             SaveExitTime();
         }
-
         else
         {
             LoadGauge();
@@ -71,29 +63,118 @@ public class GaugeBar : MonoBehaviour
     void SaveExitTime()
     {
         PlayerPrefs.SetString("LastExitTime", System.DateTime.UtcNow.ToString());
-        PlayerPrefs.SetFloat("CurrentGaugeValue", gaugeSlider.value);
+        PlayerPrefs.SetInt("CurrentGaugeValue", Mathf.RoundToInt(gaugeSlider.value)); 
         PlayerPrefs.Save();
     }
 
     public void UpdateGauge()
     {
         gaugeSlider.value = Mathf.Max(0, gaugeSlider.value - 1);
+        InitializeGauge();
+    }
+
+    public void InitializeGauge()
+    {
+        int currentGaugeValue = PlayerPrefs.GetInt("CurrentGaugeValue", 0);
+        gaugeSlider.value = currentGaugeValue;
+        PlayerPrefs.Save();
+
+        countText.text = gaugeSlider.value.ToString();
+        if (gaugeSlider.value >= gaugeSlider.maxValue)
+        {
+            timerText.gameObject.SetActive(false);
+        }
+
+        else
+        {
+            int lastGaugeTime = PlayerPrefs.GetInt("LastGaugeTime", 60);
+            if (gaugeCoroutine != null)
+            {
+                StopCoroutine(gaugeCoroutine);
+                gaugeCoroutine = null;
+            }
+            gaugeCoroutine = StartCoroutine(GaugeCoroutine(lastGaugeTime > 0 ? lastGaugeTime : 60));
+        }        
+    }
+
+    public void TutorialData()
+    {
+        gaugeSlider.value = 10;
+        countText.text = "10";
+        PlayerPrefs.SetInt("CurrentGaugeValue", 10);
+        PlayerPrefs.Save();
+        timerText.gameObject.SetActive(false);
+    }
+
+    public void TutorialCoroutine()
+    {
+        if (gaugeSlider.value < gaugeSlider.maxValue)
+        {
+            StartCoroutine(TutorialAnimation());
+        }
+    }
+
+    private IEnumerator TutorialAnimation()
+    {
+        float startValue = gaugeSlider.value;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 4)
+        {
+            elapsedTime += Time.deltaTime;
+            float progress = elapsedTime / 4;
+            gaugeSlider.value = Mathf.Lerp(startValue, gaugeSlider.maxValue, progress);
+            countText.text = Mathf.RoundToInt(gaugeSlider.value).ToString();
+
+            yield return null;
+        }
+        gaugeSlider.value = Mathf.RoundToInt(gaugeSlider.maxValue);
+        PlayerPrefs.SetInt("CurrentGaugeValue", Mathf.RoundToInt(gaugeSlider.value)); // Saving as int
+        PlayerPrefs.Save();
+    }
+
+    private IEnumerator GaugeCoroutine(int lastGaugeTime)
+    {
+        
+        while (gaugeSlider.value < gaugeSlider.maxValue)  
+        {
+            float elapsedTime = 0f;
+
+            countText.text = gaugeSlider.value.ToString();
+            timerText.gameObject.SetActive(true);
+
+            while (elapsedTime < lastGaugeTime)
+            {
+                timerText.text = $"0:{(int)(lastGaugeTime - elapsedTime):D2}";
+                PlayerPrefs.SetInt("LastGaugeTime", (int)(lastGaugeTime - elapsedTime));
+                PlayerPrefs.Save();
+                yield return new WaitForSeconds(1f);
+                elapsedTime++;
+            }
+
+            gaugeSlider.value++;
+            PlayerPrefs.SetInt("CurrentGaugeValue", Mathf.RoundToInt(gaugeSlider.value));
+            PlayerPrefs.Save();
+
+            lastGaugeTime = 60;
+        }
+
     }
 
 
     void LoadGauge()
     {
         string lastExitTimeStr = PlayerPrefs.GetString("LastExitTime", string.Empty);
-
         if (!string.IsNullOrEmpty(lastExitTimeStr))
         {
             System.DateTime lastExitTime = System.DateTime.Parse(lastExitTimeStr);
             System.TimeSpan timeSinceExit = System.DateTime.UtcNow - lastExitTime;
 
             int incrementsSinceLastExit = (int)(timeSinceExit.TotalSeconds / increaseInterval) * increaseAmount;
-            float currentGaugeValue = PlayerPrefs.GetFloat("CurrentGaugeValue", 0f) + incrementsSinceLastExit;
-
+            int currentGaugeValue = PlayerPrefs.GetInt("CurrentGaugeValue", 0);
             gaugeSlider.value = Mathf.Min(currentGaugeValue, gaugeSlider.maxValue);
         }
+
+        InitializeGauge();
     }
 }

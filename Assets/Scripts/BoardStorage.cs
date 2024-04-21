@@ -46,7 +46,7 @@ public class BoardStorage : ScriptableObject
     
     public BoardArray[] boardArray; 
 
-    Dictionary<BoardID, List<GameObject>> boardDictionary = new Dictionary<BoardID, List<GameObject>>(); 
+    public Dictionary<BoardID, List<GameObject>> boardDictionary = new Dictionary<BoardID, List<GameObject>>(); 
 
     void GenerateDictionary()
     {
@@ -74,6 +74,20 @@ public class BoardStorage : ScriptableObject
             return null;
         }
     }
+
+    public BoardID GetPuzzle(GameObject puzzle)
+    {
+        foreach (var item in boardDictionary)
+        {
+            if (item.Value.Contains(puzzle))
+            {
+                return item.Key; 
+            }
+        }
+
+        return BoardID.Board_0;
+    }
+
 
 }
 

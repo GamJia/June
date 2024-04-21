@@ -13,6 +13,7 @@ public class PrologueManager : MonoBehaviour
         PlayerPrefs.DeleteKey("IsItemAvailable");
         PlayerPrefs.DeleteKey("ItemQuantity");
         PlayerPrefs.DeleteKey("LastItemTime");
+        PlayerPrefs.DeleteKey("LastGaugeTime");
 
         string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
         if (System.IO.File.Exists(filePath))
