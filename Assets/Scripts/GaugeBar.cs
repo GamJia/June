@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GaugeManager : MonoBehaviour
+public class GaugeBar : MonoBehaviour
 {
     public Slider gaugeSlider; 
     public float increaseInterval = 60f; 
     public int increaseAmount = 1; 
     private float timer = 0f;
 
-    public static GaugeManager Instance => instance;
-    private static GaugeManager instance;
+    public static GaugeBar Instance => instance;
+    private static GaugeBar instance;
     
     void Awake()
     {
