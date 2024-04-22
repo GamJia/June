@@ -69,7 +69,11 @@ public class GaugeBar : MonoBehaviour
 
     public void UpdateGauge()
     {
-        gaugeSlider.value = Mathf.Max(0, gaugeSlider.value - 1);
+        int currentGaugeValue = PlayerPrefs.GetInt("CurrentGaugeValue", Mathf.RoundToInt(gaugeSlider.maxValue));
+        currentGaugeValue = Mathf.Max(0, currentGaugeValue - 1);
+        PlayerPrefs.SetInt("CurrentGaugeValue", currentGaugeValue);
+        PlayerPrefs.Save();
+        
         InitializeGauge();
     }
 
@@ -77,16 +81,19 @@ public class GaugeBar : MonoBehaviour
     {
         int currentGaugeValue = PlayerPrefs.GetInt("CurrentGaugeValue", 0);
         gaugeSlider.value = currentGaugeValue;
-        PlayerPrefs.Save();
 
-        countText.text = gaugeSlider.value.ToString();
         if (gaugeSlider.value >= gaugeSlider.maxValue)
         {
             timerText.gameObject.SetActive(false);
+            countText.text="MAX";
+
+            PlayerPrefs.SetInt("LastGaugeTime", 0);
+            PlayerPrefs.Save();
         }
 
         else
         {
+            countText.text = gaugeSlider.value.ToString();
             int lastGaugeTime = PlayerPrefs.GetInt("LastGaugeTime", 60);
             if (gaugeCoroutine != null)
             {
@@ -95,6 +102,7 @@ public class GaugeBar : MonoBehaviour
             }
             gaugeCoroutine = StartCoroutine(GaugeCoroutine(lastGaugeTime > 0 ? lastGaugeTime : 60));
         }        
+        
     }
 
     public void TutorialData()
@@ -159,6 +167,8 @@ public class GaugeBar : MonoBehaviour
             lastGaugeTime = 60;
         }
 
+        InitializeGauge();
+
     }
 
 
@@ -172,7 +182,12 @@ public class GaugeBar : MonoBehaviour
 
             int incrementsSinceLastExit = (int)(timeSinceExit.TotalSeconds / increaseInterval) * increaseAmount;
             int currentGaugeValue = PlayerPrefs.GetInt("CurrentGaugeValue", 0);
-            gaugeSlider.value = Mathf.Min(currentGaugeValue, gaugeSlider.maxValue);
+
+            currentGaugeValue = Mathf.Min(currentGaugeValue + incrementsSinceLastExit, Mathf.RoundToInt(gaugeSlider.maxValue));
+
+            // 업데이트된 게이지 값을 PlayerPrefs에 저장
+            PlayerPrefs.SetInt("CurrentGaugeValue", currentGaugeValue);
+            PlayerPrefs.Save();
         }
 
         InitializeGauge();

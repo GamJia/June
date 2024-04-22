@@ -14,7 +14,7 @@ public enum StageType
 public class Stage : MonoBehaviour
 {
     [SerializeField] private GameObject puzzleGameObject;
-    private StageType currentStageType=StageType.MainGame;
+    public StageType currentStageType;
 
     public BoardStorage boardStorage;
     public GroupStorage groupStorage;
@@ -53,19 +53,14 @@ public class Stage : MonoBehaviour
 
     public void LoadPuzzle()
     {
-        puzzles.Clear();
-
         string key = SceneManager.GetActiveScene().name + "StageType";
-        int stageType = PlayerPrefs.GetInt(key, (int)StageType.MainGame);
-        currentStageType = (StageType)stageType;
-        
-        string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
 
-        if (!System.IO.File.Exists(filePath))
+        if (PlayerPrefs.HasKey(key))
         {
-            currentStageType = StageType.Tutorial;
-            SaveStageType(); 
-        }            
+            currentStageType = (StageType)PlayerPrefs.GetInt(key);
+        }
+
+        puzzles.Clear();
 
         if (groupStorage != null)
         {
@@ -99,9 +94,7 @@ public class Stage : MonoBehaviour
                         rectTransform.pivot = new Vector2(0, 1f);
                     }
                     break;
-            }
-            
-            
+            }                        
 
             AssignPuzzle();
         }

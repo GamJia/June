@@ -909,6 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleGameObject: {fileID: 3943591041288538351, guid: 0b52d20c252b3184fa62316c5a9218fc, type: 3}
+  currentStageType: 0
   boardStorage: {fileID: 11400000, guid: 2f0490cba2d5a7848839aa03796e17f0, type: 2}
   groupStorage: {fileID: 11400000, guid: a9b211d1bc632684085d94f97f74bda4, type: 2}
   groupID: 0
@@ -943,7 +944,7 @@ MonoBehaviour:
     m_Right: 30
     m_Top: 30
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 0
   m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1

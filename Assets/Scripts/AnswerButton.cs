@@ -42,7 +42,7 @@ public class AnswerButton : MonoBehaviour
 
         float itemQuantity = PlayerPrefs.GetFloat("ItemQuantity", 0);
         int isItemAvailable = PlayerPrefs.GetInt("IsItemAvailable", 0);
-        int lastItemTime = PlayerPrefs.GetInt("LastItemTime", 59); 
+        int lastItemTime = PlayerPrefs.GetInt("LastItemTime", 45); 
 
         if(lastItemTime>0&&isItemAvailable.Equals(1))
         {
@@ -113,7 +113,7 @@ public class AnswerButton : MonoBehaviour
                 StopCoroutine(itemCoroutine);
             }
             
-            itemCoroutine=StartCoroutine(ItemCoroutine(59));
+            itemCoroutine=StartCoroutine(ItemCoroutine(45));
 
         }
     }

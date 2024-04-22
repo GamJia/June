@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement; 
 
 public class PrologueManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class PrologueManager : MonoBehaviour
         PlayerPrefs.DeleteKey("ItemQuantity");
         PlayerPrefs.DeleteKey("LastItemTime");
         PlayerPrefs.DeleteKey("LastGaugeTime");
+
+        string key = SceneManager.GetActiveScene().name + "StageType";
+        PlayerPrefs.DeleteKey(key);
 
         string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
         if (System.IO.File.Exists(filePath))
