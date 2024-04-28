@@ -16,8 +16,11 @@ public class PrologueManager : MonoBehaviour
         PlayerPrefs.DeleteKey("LastItemTime");
         PlayerPrefs.DeleteKey("LastGaugeTime");
 
-        string key = SceneManager.GetActiveScene().name + "StageType";
+        string key = SceneManager.GetActiveScene().name + "_StageType";
         PlayerPrefs.DeleteKey(key);
+
+        string dialogueKey = SceneManager.GetActiveScene().name + "_Dialogue";
+        PlayerPrefs.DeleteKey(dialogueKey);
 
         string filePath = $"{Application.persistentDataPath}/PuzzleData.json";
         if (System.IO.File.Exists(filePath))

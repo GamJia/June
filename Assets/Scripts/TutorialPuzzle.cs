@@ -111,7 +111,7 @@ public class TutorialPuzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
             DialogueLua.SetVariable("PuzzleComplete", currentPuzzleComplete);
             if(currentPuzzleComplete%3==0)
             {
-                DialogueManager.StartConversation("Tutorial");
+                DialogueManager.StartConversation("Stage_0");
             }
 
             PuzzleDataManager.SavePuzzleStates(puzzlesData);

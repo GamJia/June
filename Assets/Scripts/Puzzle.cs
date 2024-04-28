@@ -171,7 +171,18 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
                     float newWidth = answerRectTransform.sizeDelta.x + 50;
                     float newHeight = answerRectTransform.sizeDelta.y + 50;
 
+                    if(newWidth<100)
+                    {
+                        newWidth=100;
+                    }
+
+                    if(newHeight<100)
+                    {
+                        newHeight=100;
+                    }                    
+
                     cameraRectTransform.sizeDelta = new Vector2(newWidth, newHeight);
+                    
                 }
 
                 CinemachineManager.Instance.ItemTarget(answer);

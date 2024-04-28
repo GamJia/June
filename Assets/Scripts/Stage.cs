@@ -13,7 +13,6 @@ public enum StageType
 
 public class Stage : MonoBehaviour
 {
-    [SerializeField] private GameObject puzzleGameObject;
     public StageType currentStageType;
 
     public BoardStorage boardStorage;
@@ -53,7 +52,7 @@ public class Stage : MonoBehaviour
 
     public void LoadPuzzle()
     {
-        string key = SceneManager.GetActiveScene().name + "StageType";
+        string key = SceneManager.GetActiveScene().name + "_StageType";
 
         if (PlayerPrefs.HasKey(key))
         {
@@ -124,6 +123,8 @@ public class Stage : MonoBehaviour
 
         foreach (GameObject puzzle in puzzles)
         {
+            GameObject puzzleGameObject = Resources.Load<GameObject>("Prefabs/Puzzle");
+
             GameObject puzzleParentInstance = Instantiate(puzzleGameObject, this.transform.position, Quaternion.identity, this.transform);
             GameObject puzzleInstance = Instantiate(puzzle, puzzle.transform.position, puzzle.transform.rotation);
 
@@ -196,7 +197,7 @@ public class Stage : MonoBehaviour
 
     private void SaveStageType()
     {
-        string key = SceneManager.GetActiveScene().name + "StageType";
+        string key = SceneManager.GetActiveScene().name + "_StageType";
         PlayerPrefs.SetInt(key, (int)currentStageType);
         PlayerPrefs.Save();
     }

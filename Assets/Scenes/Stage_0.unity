@@ -355,7 +355,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 342883635}
   m_HandleRect: {fileID: 342883634}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -908,7 +908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44ca119222a70246875cd3426a4d120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleGameObject: {fileID: 3943591041288538351, guid: 0b52d20c252b3184fa62316c5a9218fc, type: 3}
   currentStageType: 0
   boardStorage: {fileID: 11400000, guid: 2f0490cba2d5a7848839aa03796e17f0, type: 2}
   groupStorage: {fileID: 11400000, guid: a9b211d1bc632684085d94f97f74bda4, type: 2}
@@ -2432,6 +2431,18 @@ MonoBehaviour:
         - m_Target: {fileID: 1977138156}
           m_TargetAssemblyTypeName: GaugeBar, Assembly-CSharp
           m_MethodName: TutorialCoroutine
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 7005742371221935723}
+          m_TargetAssemblyTypeName: DialogueDataManager, Assembly-CSharp
+          m_MethodName: SaveDialogueData
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5462,8 +5473,6 @@ GameObject:
   - component: {fileID: 1993107605}
   - component: {fileID: 1993107603}
   - component: {fileID: 1993107602}
-  - component: {fileID: 1993107607}
-  - component: {fileID: 1993107606}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5758,47 +5767,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 682044ce51feafb4e8a5e82bd7196dda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!320 &1993107606
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993107596}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 919038124847914773, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
-    value: {fileID: 1415303952}
-  - key: {fileID: 8061192217629682024, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 703481444717940011, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
-    value: {fileID: 6963306208845741351}
-  - key: {fileID: -7809224216788118127, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
-    value: {fileID: 6963306208845741351}
-  - key: {fileID: -770322978809541946, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
-    value: {fileID: 1455336524}
-  - key: {fileID: -8972502999488930806, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
-    value: {fileID: 1921198578}
-  m_ExposedReferences:
-    m_References: []
---- !u!114 &1993107607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993107596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47a608159fc6d745979d0d018f25652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2004977762
@@ -6152,6 +6120,8 @@ GameObject:
   - component: {fileID: 7005742371221935716}
   - component: {fileID: 7005742371221935717}
   - component: {fileID: 7005742371221935719}
+  - component: {fileID: 7005742371221935723}
+  - component: {fileID: 7005742371221935722}
   m_Layer: 0
   m_Name: Dialogue Manager
   m_TagString: Untagged
@@ -6552,9 +6522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions:
-    - 'CountPuzzle(3) '
-    - 'CountPuzzle(6) '
+    luaConditions: []
     questConditions: []
     acceptedTags: []
     acceptedGameObjects: []
@@ -6590,7 +6558,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: Prologue
+  conversation: Stage_0
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1
@@ -6630,7 +6598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   once: 1
   trigger: 32
-  playableDirector: {fileID: 1993107606}
+  playableDirector: {fileID: 0}
   timelineAsset: {fileID: 11400000, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
   condition:
     luaConditions: []
@@ -6794,6 +6762,47 @@ Transform:
   m_Father: {fileID: 1993107600}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &7005742371221935722
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963306208845741351}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 919038124847914773, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
+    value: {fileID: 1415303952}
+  - key: {fileID: 8061192217629682024, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 703481444717940011, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
+    value: {fileID: 6963306208845741351}
+  - key: {fileID: -7809224216788118127, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
+    value: {fileID: 6963306208845741351}
+  - key: {fileID: -770322978809541946, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
+    value: {fileID: 1455336524}
+  - key: {fileID: -8972502999488930806, guid: 46da826bfd9887e44921e43984f56e38, type: 2}
+    value: {fileID: 1921198578}
+  m_ExposedReferences:
+    m_References: []
+--- !u!114 &7005742371221935723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963306208845741351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c812118e80c952f47bb29914a51c03ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7993606851812025216
 GameObject:
   m_ObjectHideFlags: 0

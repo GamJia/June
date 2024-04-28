@@ -8,7 +8,6 @@ public class GaugeBar : MonoBehaviour
     public Slider gaugeSlider;
     public float increaseInterval = 60f;
     public int increaseAmount = 1;
-    private float timer = 0f;
     private Coroutine gaugeCoroutine = null;
 
     [SerializeField] private Text countText;

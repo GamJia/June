@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     conversant: {fileID: 0}
-    conversation: Tutorial
+    conversation: Stage_0
     jumpToSpecificEntry: 0
     entryID: 0
     exclusive: 0
