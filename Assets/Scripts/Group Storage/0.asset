@@ -15,5 +15,8 @@ MonoBehaviour:
   groupArray:
   - _groupID: 0
     _boardList:
-    - {fileID: 3744598343093433541, guid: f643103ef18d28442800b35be5cc9ff0, type: 3}
-    - {fileID: 5128001108658468845, guid: c0b4eb54de5f97a49bc923f6356b95ca, type: 3}
+    - {fileID: 3768486482531043439, guid: c0b4eb54de5f97a49bc923f6356b95ca, type: 3}
+    - {fileID: 4736374558526682931, guid: 427410e8b4388c44f9d03685efb4b6a9, type: 3}
+  - _groupID: 1
+    _boardList:
+    - {fileID: 8322279333282641816, guid: f643103ef18d28442800b35be5cc9ff0, type: 3}

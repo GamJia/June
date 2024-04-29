@@ -109,7 +109,7 @@ public class TutorialPuzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
             int currentPuzzleComplete = DialogueLua.GetVariable("PuzzleComplete").asInt;
             currentPuzzleComplete++;
             DialogueLua.SetVariable("PuzzleComplete", currentPuzzleComplete);
-            if(currentPuzzleComplete%3==0)
+            if(currentPuzzleComplete==3||currentPuzzleComplete==7)
             {
                 DialogueManager.StartConversation("Stage_0");
             }

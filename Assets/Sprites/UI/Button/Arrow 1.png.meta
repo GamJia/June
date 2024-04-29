@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3e6ef7a1b67fc15428643295cf8ff614
+guid: 7b5989e6be51fa54e8e0ac31e4ec5a34
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,10 +44,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,43 +117,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sky_0
+      name: Arrow_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 960
-        height: 540
+        x: 4
+        y: 104
+        width: 22
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efcff5ed117c36e4fa0479f59095915f
-      internalID: -1847965091
+      spriteID: 0932837428879f4439be94c208302ce5
+      internalID: 118602725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sky_1
+      name: Arrow_1
       rect:
         serializedVersion: 2
-        x: 960
-        y: 0
-        width: 960
-        height: 540
+        x: 37
+        y: 81
+        width: 22
+        height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 15, z: 0, w: 15}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 859e4fcac6b41b04f9f05a700a9d9f30
-      internalID: 856171519
+      spriteID: 1b8f0010088f22f4b94b6e8f7576993f
+      internalID: -265413235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 97
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 9, y: 9, z: 9, w: 9}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e4e913b102fa484085a99977664377b
+      internalID: 39398773
       vertices: []
       indices: 
       edges: []
@@ -169,8 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sky_0: -1847965091
-      sky_1: 856171519
+      Arrow_0: 118602725
+      Arrow_1: -265413235
+      Arrow_2: 39398773
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

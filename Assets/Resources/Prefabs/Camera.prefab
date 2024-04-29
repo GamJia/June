@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2051088591199441391}
   - component: {fileID: 2910012642945616302}
   - component: {fileID: -2718605912653946030}
+  - component: {fileID: 6015194872328758150}
   m_Layer: 5
   m_Name: Camera
   m_TagString: Untagged
@@ -87,8 +88,30 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: aa53f3fbc6b485943bce2c587ad608fd, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: aa53f3fbc6b485943bce2c587ad608fd, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!223 &6015194872328758150
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172297032732564350}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 1
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 10
+  m_TargetDisplay: 0
