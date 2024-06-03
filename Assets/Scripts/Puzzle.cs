@@ -67,10 +67,6 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
         ScrollView.Instance.SetAlpha(this.gameObject);
 
-        Canvas canvas = gameObject.AddComponent<Canvas>();
-        canvas.overrideSorting = true;
-        canvas.sortingOrder = 3;
-
         ShowAnswer();
     }
 
@@ -98,12 +94,6 @@ public class Puzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         int currentGaugeValue = PlayerPrefs.GetInt("CurrentGaugeValue", 0);
 
         ScrollView.Instance.ResetAlpha(this.gameObject,parentTransform);
-
-        Canvas canvas = gameObject.GetComponent<Canvas>();
-        if (canvas != null)
-        {
-            Destroy(canvas);
-        }
 
         if (distance <= 40f&& currentGaugeValue > 0)
         {
