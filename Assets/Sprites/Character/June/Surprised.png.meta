@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2898d37a42b12db44902e4ac99ec29de
+guid: 3272f156ec69feb4cbb90232d45216b0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,70 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walk_White_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 345891ce23ea39b4989d01e0544bda1f
-      internalID: 1192603581
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk_White_1
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bec5053a67d319246905d00d05b3fa23
-      internalID: 1667485927
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk_White_2
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c08718d08b2fc6346b8528a602c8e1db
-      internalID: 1352380122
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk_White_3
+      name: Surprised_0
       rect:
         serializedVersion: 2
         x: 0
@@ -194,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02b91c6b76f7d524d96c2d67d16b891d
-      internalID: 1103089747
+      spriteID: de2afdbe533237f4cba936ecc181caa6
+      internalID: 1736729964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_White_4
+      name: Surprised_1
       rect:
         serializedVersion: 2
         x: 256
@@ -215,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cfd0e53e329bcd499145b5886a0b3ca
-      internalID: 94597623
+      spriteID: 419c7966734e90e438a239845fa8b1a3
+      internalID: -1215136655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_White_5
+      name: Surprised_2
       rect:
         serializedVersion: 2
         x: 512
@@ -236,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d65893859dd6581499c1b88230e9f8c8
-      internalID: 1420330230
+      spriteID: f52e901346a884346ac9cb40d5dcfab0
+      internalID: -50501932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_White_6
+      name: Surprised_3
       rect:
         serializedVersion: 2
         x: 0
@@ -257,8 +194,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69caa3aa01cab30478a6371d9ec3f8d6
-      internalID: 1512002708
+      spriteID: 0d295d725c72e6144819884991b88e45
+      internalID: -491970104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Surprised_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21df2d91b5ecca44dafbcd4bec24cc2e
+      internalID: 1163363166
       vertices: []
       indices: 
       edges: []
@@ -274,13 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Walk_White_0: 1192603581
-      Walk_White_1: 1667485927
-      Walk_White_2: 1352380122
-      Walk_White_3: 1103089747
-      Walk_White_4: 94597623
-      Walk_White_5: 1420330230
-      Walk_White_6: 1512002708
+      Surprised_0: 1736729964
+      Surprised_1: -1215136655
+      Surprised_2: -50501932
+      Surprised_3: -491970104
+      Surprised_4: 1163363166
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

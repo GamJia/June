@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935899b62f48ae5498594680ed17d133, type: 3}
-  m_Name: Main_Story
+  m_Name: Main_Story (Auto-Backup)
   m_EditorClassIdentifier: 
   version: 
   author: 
@@ -340,7 +340,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1240.7637
-        y: 96.045654
+        y: 97.41551
         width: 160
         height: 30
     - id: 2
@@ -396,7 +396,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1239.699
-        y: 149.53233
+        y: 150.20801
         width: 160
         height: 30
     - id: 3
@@ -430,10 +430,6 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
-      - title: EventGuid
-        value: 0fe8aea6-bfb3-4e34-9e5f-9be97836c2ee
-        type: 0
-        typeString: 
       conversationID: 1
       isRoot: 0
       isGroup: 0
@@ -455,7 +451,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1241.0504
+        x: 1239.699
         y: 201.49628
         width: 160
         height: 30
@@ -516,7 +512,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1239.6266
-        y: 251.61362
+        y: 252.96497
         width: 160
         height: 30
     - id: 5
@@ -1071,7 +1067,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1459.7107
-        y: 96.77527
+        y: 98.14514
         width: 160
         height: 30
     - id: 24
@@ -1499,8 +1495,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 801.5441, y: 139.57138}
-    canvasZoom: 1.4199994
+    canvasScrollPosition: {x: 827.3728, y: 0}
+    canvasZoom: 0.73
   - id: 3
     fields:
     - title: Title
@@ -1712,7 +1708,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 705.06256, y: 0}
+    canvasScrollPosition: {x: 883.413, y: 0}
     canvasZoom: 0.97
   syncInfo:
     syncActors: 0

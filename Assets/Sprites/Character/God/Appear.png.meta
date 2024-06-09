@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2898d37a42b12db44902e4ac99ec29de
+guid: f0adfe4394367b94eb269f10260565a1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walk_White_0
+      name: Appear_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 345891ce23ea39b4989d01e0544bda1f
-      internalID: 1192603581
+      spriteID: cee318b54eca93f4c81d2aa3ef151ec3
+      internalID: -1631298086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_White_1
+      name: Appear_1
       rect:
         serializedVersion: 2
         x: 256
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bec5053a67d319246905d00d05b3fa23
-      internalID: 1667485927
+      spriteID: add8577650e9f234e9cd2100410a3d05
+      internalID: 1894853157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_White_2
+      name: Appear_2
       rect:
         serializedVersion: 2
         x: 512
@@ -173,14 +173,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c08718d08b2fc6346b8528a602c8e1db
-      internalID: 1352380122
+      spriteID: 5fec14ea90877a64b96e507e84401d95
+      internalID: 808878063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_White_3
+      name: Appear_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 065365937eaee02408d5a6eb0135e57c
+      internalID: 1520119311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Appear_4
       rect:
         serializedVersion: 2
         x: 0
@@ -194,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02b91c6b76f7d524d96c2d67d16b891d
-      internalID: 1103089747
+      spriteID: 16fd8087730b11c4e8e3b150c36080b4
+      internalID: 1463191376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_White_4
+      name: Appear_5
       rect:
         serializedVersion: 2
         x: 256
@@ -215,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cfd0e53e329bcd499145b5886a0b3ca
-      internalID: 94597623
+      spriteID: 08f4f833430a57342b3303fa8189b7f9
+      internalID: -562912378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_White_5
+      name: Appear_6
       rect:
         serializedVersion: 2
         x: 512
@@ -236,14 +257,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d65893859dd6581499c1b88230e9f8c8
-      internalID: 1420330230
+      spriteID: 24ddf1cbaa2d4f24186da3d7a45bcf77
+      internalID: -1103686601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_White_6
+      name: Appear_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ac8702fe0e8d74bae49a0cbb4d87fe
+      internalID: -129859764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Appear_8
       rect:
         serializedVersion: 2
         x: 0
@@ -257,8 +299,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69caa3aa01cab30478a6371d9ec3f8d6
-      internalID: 1512002708
+      spriteID: c4edd30bc1a8eba48934725570a5cd85
+      internalID: 1299477375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Appear_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f94ca08c2d360474b83fdbddb8b3f89c
+      internalID: -225987323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Appear_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 040b404edc1f8c242ba72fc780429ce9
+      internalID: 1834785751
       vertices: []
       indices: 
       edges: []
@@ -274,13 +358,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Walk_White_0: 1192603581
-      Walk_White_1: 1667485927
-      Walk_White_2: 1352380122
-      Walk_White_3: 1103089747
-      Walk_White_4: 94597623
-      Walk_White_5: 1420330230
-      Walk_White_6: 1512002708
+      Appear_0: -1631298086
+      Appear_1: 1894853157
+      Appear_10: 1834785751
+      Appear_2: 808878063
+      Appear_3: 1520119311
+      Appear_4: 1463191376
+      Appear_5: -562912378
+      Appear_6: -1103686601
+      Appear_7: -129859764
+      Appear_8: 1299477375
+      Appear_9: -225987323
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
