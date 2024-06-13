@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1564864849}
   m_HandleRect: {fileID: 1564864847}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1773,7 +1773,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.4
+  orthographic size: 2.246551
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3043,7 +3043,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5.4
+    OrthographicSize: 2.246551
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
