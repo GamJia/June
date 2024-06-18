@@ -14,8 +14,8 @@ public class LoadingManager : MonoBehaviour
 
     IEnumerator LoadNextScene()
     {
-        int nextSceneIndex = PlayerPrefs.GetInt("NextSceneIndex", 0);
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneIndex);
+        string nextSceneName = PlayerPrefs.GetString("NextSceneName", "Intro");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneName);
         asyncLoad.allowSceneActivation = false;
 
         // Fake Timer

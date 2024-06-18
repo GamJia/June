@@ -7,23 +7,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    [SerializeField] private int sceneIndex; 
+    
     void Start()
     {
+        Text continueText = GameObject.Find("Continue Text")?.GetComponent<Text>();
+        
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (currentSceneIndex.Equals(0))
         {
-            if (PlayerPrefs.HasKey("SavedSceneIndex"))
+            if (PlayerPrefs.HasKey("SavedSceneName"))
             {
-                GetComponentInChildren<Text>().text = "이어하기";
+                continueText.text = "이어하기";
             }
             else
             {
-                GetComponentInChildren<Text>().text = "처음부터";
+                continueText.text = "처음부터";
             }
         }
-        
-
     }
 
     // public void ResetSavedScene() 튜토리얼 영상용
@@ -39,31 +39,38 @@ public class SceneLoader : MonoBehaviour
     //     }
     // }
 
+    public void IntroSceneButton()
+    {
+        if (PlayerPrefs.HasKey("SavedSceneName"))
+        {
+            GetComponentInChildren<Text>().text = "이어하기";
+        }
+        else
+        {
+            GetComponentInChildren<Text>().text = "처음부터";
+        }
+    }
+
     public void LoadSavedScene()
     {
-        if (PlayerPrefs.HasKey("SavedSceneIndex"))
+        if (PlayerPrefs.HasKey("SavedSceneName"))
         {
-            int savedSceneIndex = PlayerPrefs.GetInt("SavedSceneIndex");
-            PlayerPrefs.SetInt("NextSceneIndex", savedSceneIndex);
-            SceneManager.LoadScene(1); 
+            string savedSceneName = PlayerPrefs.GetString("SavedSceneName");
+            PlayerPrefs.SetString("NextSceneName", savedSceneName);
+            SceneManager.LoadScene("Loading");  
         }
 
         else
         {
-            PlayerPrefs.SetInt("NextSceneIndex", 2);
-            SceneManager.LoadScene(1); 
+            PlayerPrefs.SetString("NextSceneName", "Stage_0"); 
+            SceneManager.LoadScene("Loading"); 
         }
     }
 
-    public void LoadNextScene()
+    public void LoadCustomScene(string sceneName)
     {
-        int totalScenes = SceneManager.sceneCountInBuildSettings;
-        if (sceneIndex >= totalScenes)
-        {
-            sceneIndex = 0; 
-        }
-
-        PlayerPrefs.SetInt("NextSceneIndex", sceneIndex);
-        SceneManager.LoadScene(1);
+        PlayerPrefs.SetString("NextSceneName", sceneName);
+        SceneManager.LoadScene("Loading");
     }
+
 }

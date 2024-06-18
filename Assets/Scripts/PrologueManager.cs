@@ -15,6 +15,7 @@ public class PrologueManager : MonoBehaviour
         PlayerPrefs.DeleteKey("ItemQuantity");
         PlayerPrefs.DeleteKey("LastItemTime");
         PlayerPrefs.DeleteKey("LastGaugeTime");
+        PlayerPrefs.DeleteKey("SavedSceneName");
 
         string key = SceneManager.GetActiveScene().name + "_StageType";
         PlayerPrefs.DeleteKey(key);

@@ -29,8 +29,8 @@ public class SceneSaver : MonoBehaviour
 
     public void SaveCurrentScene()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        PlayerPrefs.SetInt("SavedSceneIndex", currentSceneIndex);
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("SavedSceneName", currentSceneName);
         PlayerPrefs.Save();
     }
 }
